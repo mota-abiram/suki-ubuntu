@@ -97,6 +97,12 @@ UTILITIES
             padding: 0 24px;
         }
 
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+        }
+
         .section-label {
             font-family: var(--font-sans);
             font-size: 12px;
@@ -109,7 +115,7 @@ UTILITIES
 
         .section-title {
             font-family: var(--font-serif);
-            font-size: clamp(32px, 4vw, 52px);
+            font-size: clamp(28px, 6vw, 52px);
             font-weight: 600;
             line-height: 1.15;
             color: var(--forest-dark);
@@ -120,21 +126,33 @@ UTILITIES
         }
 
         .section-desc {
-            font-size: 16px;
+            font-size: clamp(14px, 2vw, 16px);
             color: var(--text-mid);
             line-height: 1.7;
             max-width: 620px;
             margin-top: 14px;
         }
 
+        .hide-mobile {
+            display: inline;
+        }
+
+        @media (max-width: 768px) {
+            .hide-mobile {
+                display: none;
+            }
+        }
+
         .btn-primary {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             background: var(--gold);
             color: var(--white);
             border: none;
             padding: 14px 32px;
+            min-height: 48px;
             border-radius: 6px;
             font-size: 15px;
             font-weight: 600;
@@ -152,11 +170,13 @@ UTILITIES
         .btn-outline {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             background: transparent;
             color: var(--forest);
             border: 2px solid var(--forest);
             padding: 12px 28px;
+            min-height: 48px;
             border-radius: 6px;
             font-size: 15px;
             font-weight: 600;
@@ -228,15 +248,24 @@ NAVBAR
             background: var(--gold);
             color: var(--white);
             border: none;
-            padding: 10px 24px;
+            padding: 10px 20px;
+            min-height: 44px;
             border-radius: 6px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             transition: var(--transition);
+            flex-shrink: 0;
         }
 
-        .nav-cta:hover {
-            background: #b8892e;
+        @media (max-width: 380px) {
+            .nav-cta {
+                padding: 10px 14px;
+                font-size: 12px;
+            }
+
+            .nav-logo-img {
+                height: 40px;
+            }
         }
 
         /* ============================================================
@@ -265,7 +294,7 @@ HERO SECTION
         }
 
         .hero-slide.active {
-            opacity: 0.8;
+            opacity: 0.6;
         }
 
         .hero-slide:nth-child(1) {
@@ -311,9 +340,9 @@ HERO SECTION
 
         .hero-title {
             font-family: var(--font-serif);
-            font-size: clamp(38px, 5.5vw, 72px);
+            font-size: clamp(34px, 7vw, 72px);
             font-weight: 700;
-            line-height: 1.08;
+            line-height: 1.1;
             color: var(--white);
             margin-bottom: 20px;
         }
@@ -1826,9 +1855,19 @@ THANK-YOU OVERLAY
         }
 
         /* ============================================================
-RESPONSIVE
-============================================================ */
-        @media(max-width:960px) {
+        RESPONSIVE MEDIA QUERIES
+        ============================================================ */
+        @media(max-width: 1024px) {
+            .usps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .plans-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width: 960px) {
 
             .form-section-inner,
             .overview-grid,
@@ -1839,67 +1878,122 @@ RESPONSIVE
                 gap: 40px;
             }
 
-            .usps-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .overview-visual {
+                order: -1;
             }
 
             .testimonials-grid {
                 grid-template-columns: 1fr;
             }
+        }
+
+        @media(max-width: 768px) {
+            #hero {
+                height: auto;
+                min-height: 100vh;
+                padding: 100px 0 60px;
+            }
+
+            .hero-content {
+                padding-top: 0;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-primary,
+            .btn-outline {
+                width: 100%;
+            }
+
+            .amenity-tabs {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                margin-left: -16px;
+                margin-right: -16px;
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .amenity-tabs::-webkit-scrollbar {
+                display: none;
+            }
+
+            .amenity-tab {
+                white-space: nowrap;
+                flex-shrink: 0;
+                padding: 8px 16px;
+            }
 
             .plans-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ty-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .developer-stats {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .overview-stats {
                 grid-template-columns: 1fr 1fr;
             }
         }
 
-        @media(max-width:600px) {
+        @media(max-width: 600px) {
             .hero-title {
-                font-size: 34px;
-            }
-
-            .hero-chips {
-                gap: 7px;
-            }
-
-            .hero-chip {
-                font-size: 12px;
-                padding: 6px 12px;
+                font-size: clamp(30px, 10vw, 42px);
             }
 
             .usps-grid {
                 grid-template-columns: 1fr;
             }
 
-            .plans-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .lead-form-card {
-                padding: 28px 22px;
-            }
-
-            .developer-stats {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
+            .lead-form-card,
             .closing-form-wrap {
-                padding: 28px 22px;
+                padding: 28px 20px;
             }
 
             #sticky-bar {
                 flex-wrap: wrap;
-                gap: 8px;
-                padding: 10px 16px;
+                gap: 6px;
+                padding: 8px 12px;
             }
 
             .sticky-btn {
-                flex: 1;
-                justify-content: center;
-                padding: 10px 12px;
+                flex: 1 1 45%;
+                font-size: 11px;
+                padding: 10px 6px;
+                min-height: 48px;
+            }
+
+            .sticky-btn.sticky-enq {
+                flex: 1 1 100%;
             }
 
             #side-tab {
                 display: none;
+            }
+
+            .overview-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .ty-actions {
+                flex-direction: column;
+            }
+
+            .ty-btn-wa,
+            .ty-btn-back {
+                width: 100%;
             }
         }
 
@@ -2157,11 +2251,7 @@ ENHANCED THANK-YOU PAGE
             color: #fff;
         }
 
-        @media(max-width:600px) {
-            .ty-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+
 
         /* ============================================================
 PHONE FIELD HINT
@@ -2211,7 +2301,8 @@ HERO SECTION
                     </svg>
                     IGBC Platinum Certified &middot; Puppalguda, Hyderabad
                 </div>
-                <h2 class="hero-title"><em>Sukhi Ubuntu</em> <br>Elevated Living in the Heart of West Hyderabad</h2>
+                <h2 class="hero-title"><em>Sukhi Ubuntu</em> <br class="hide-mobile">Elevated Living in the Heart of
+                    West Hyderabad</h2>
                 <p class="hero-subtitle">A landmark residential community, bringing together modern architecture, green
                     living, and vibrant community spaces, just minutes from Financial District.</p>
                 <div class="hero-chips">
@@ -2505,10 +2596,11 @@ AMENITIES
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
                         <path d="M12 22V12M12 12S8 9 4 9M12 12s4-3 8-3" />
+                        <path d="M12 7V5M8 7l1-2M16 7l-1-2" />
                     </svg><span>Community Gardens</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
+                        <path d="M4 15l4-5 4 5 4-5 4 5M4 21h16" />
                     </svg><span>Party Lawn</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
@@ -2516,19 +2608,25 @@ AMENITIES
                     </svg><span>Jogging Track</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
+                        <path d="M4 22V4c0-1.1.9-2 2-2h12l-4 4 4 4H6" />
+                        <circle cx="12" cy="18" r="2" />
                     </svg><span>Mini Golf</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
                         <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                        <path d="M9 22v-4h6v4" />
                     </svg><span>Community Dining</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
                         <path d="M12 22V12M12 12S8 9 4 9M12 12s4-3 8-3" />
+                        <circle cx="12" cy="8" r="2" />
+                        <circle cx="8" cy="11" r="2" />
+                        <circle cx="16" cy="11" r="2" />
                     </svg><span>Nectar &amp; Flowering Gardens</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 7c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+                        <path d="M5 21v-2a7 7 0 0114 0v2M12 21v-3" />
                     </svg><span>Yoga Court</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
@@ -2545,8 +2643,7 @@ AMENITIES
                     </svg><span>Grand Reception Lobby</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                        <circle cx="9" cy="7" r="4" />
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8z" />
                     </svg><span>Multi Purpose Hall</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
@@ -2556,14 +2653,16 @@ AMENITIES
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
                         <rect x="2" y="7" width="20" height="14" rx="2" />
+                        <path d="M12 7v14M2 11h20" />
                     </svg><span>Preview Theatre</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                        <path d="M3 11l9-7 9 7v10a2 2 0 01-2 2H5a2 2 0 01-2-2V11zM7 11v4M17 11v4" />
                     </svg><span>6 Guest Bedrooms</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
+                        <path
+                            d="M6 15a3 3 0 100 6 3 3 0 000-6zm12 0a3 3 0 100 6 3 3 0 000-6zm-7-4l1.1-2 1.1 2m-6.2 7L12 12l5.1 6.1" />
                     </svg><span>Salon</span></div>
             </div>
 
@@ -2571,20 +2670,25 @@ AMENITIES
             <div id="panel-indoors" class="amenity-panel">
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                        <circle cx="9" cy="7" r="4" />
+                        <rect x="2" y="3" width="20" height="14" rx="2" />
+                        <path d="M7 21h10M12 17v4M8 7h8M8 11h8" />
                     </svg><span>Co-working Space</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
+                        <circle cx="12" cy="7" r="2" />
+                        <path
+                            d="M11 21a1 1 0 102 0 1 1 0 00-2 0zM7 21a1 1 0 102 0 1 1 0 00-2 0zM15 21a1 1 0 102 0 1 1 0 00-2 0z" />
                     </svg><span>Bowling Alley</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
+                        <path
+                            d="M18 8h2a2 2 0 012 2v2a2 2 0 01-2 2h-2M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v4M10 1v4M14 1v4" />
                     </svg><span>Cafe with Library</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18" />
+                        <circle cx="9" cy="21" r="1" />
+                        <circle cx="20" cy="21" r="1" />
+                        <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
                     </svg><span>Supermarket</span></div>
             </div>
 
@@ -2592,35 +2696,43 @@ AMENITIES
             <div id="panel-sports" class="amenity-panel">
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <rect x="2" y="2" width="20" height="20" rx="2" />
+                        <path d="M6 7.5h12M6 5v5m12-5v5M2 7h4m12 0h4" />
                     </svg><span>AC Gymnasium</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
+                        <path
+                            d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.5 0 2.5 2 5 2 2.5 0 2.5-2 5-2s3.5 1.5 4.5 2" />
                     </svg><span>Swimming Pool</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
+                        <circle cx="12" cy="7" r="2" />
+                        <path
+                            d="M11 21a1 1 0 102 0 1 1 0 00-2 0zM7 21a1 1 0 102 0 1 1 0 00-2 0zM15 21a1 1 0 102 0 1 1 0 00-2 0z" />
                     </svg><span>Bowling Alley</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="10" />
+                        <path d="M8 12h8M12 8v8" />
                     </svg><span>Boxing Ring</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
+                        <path
+                            d="M6 12a1 1 0 102 0 1 1 0 00-2 0zM16 12a1 1 0 102 0 1 1 0 00-2 0zM12 6a1 1 0 100 2 1 1 0 000-2z" />
                     </svg><span>Badminton Courts</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
+                        <path d="M4 4h16v16H4V4zM12 4v16M4 12h16" />
                     </svg><span>Squash Courts</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
+                        <circle cx="12" cy="12" r="6" />
+                        <path d="M12 6v12M6 12h12" />
                     </svg><span>Half Basketball Court</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
+                        <circle cx="7" cy="18" r="2" />
+                        <circle cx="17" cy="18" r="2" />
+                        <path d="M4 18V9l4-4h8l4 4v9h-3v-3H7v3H4z" />
                     </svg><span>Skating Rink</span></div>
             </div>
 
@@ -2628,23 +2740,27 @@ AMENITIES
             <div id="panel-kids" class="amenity-panel">
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
+                        <path d="M9 12h6m-6 4h6m-7-8l1-1h6l1 1v12a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
                     </svg><span>Creche</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
+                        <path d="M3 21h18M5 21V10l7-7 7 7v11" />
                     </svg><span>Sand Pit with Play Equipment</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
+                        <circle cx="11" cy="5" r="2" />
+                        <circle cx="15" cy="5" r="2" />
+                        <circle cx="7" cy="9" r="2" />
+                        <circle cx="19" cy="9" r="2" />
+                        <path d="M16 13c-2 0-3 1-3 1s-1-1-3-1-4 2-4 4c0 3 4 5 7 5s7-2 7-5c0-2-2-4-4-4z" />
                     </svg><span>Pets Corners</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
+                        <path d="M14 11V5l7 7-7 7v-6H3v-2h11z" />
                     </svg><span>Play Areas</span></div>
                 <div class="amenity-item"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
                         viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
+                        <path d="M3 18v-6a9 9 0 0118 0v6M3 14h18" />
                     </svg><span>Kids Court with Seating</span></div>
             </div>
         </div>
@@ -2961,7 +3077,7 @@ FLOOR PLANS
                                 Unlock Plan</button>
                             <p>Share details to view</p>
                         </div>
-                    </div>s
+                    </div>
                     <div class="plan-footer"
                         style="flex-direction: column; align-items: flex-start; gap: 4px; padding: 15px 20px;">
                         <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
