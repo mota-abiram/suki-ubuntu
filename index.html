@@ -294,19 +294,19 @@ HERO SECTION
         }
 
         .hero-slide.active {
-            opacity: 0.6;
+            opacity: 0.85;
         }
 
         .hero-slide:nth-child(1) {
-            background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 100%), url('assets/cam01.jpg');
+            background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 100%), url('assets/cam01.jpg');
         }
 
         .hero-slide:nth-child(2) {
-            background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 100%), url('assets/aerial.jpg');
+            background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 100%), url('assets/aerial.jpg');
         }
 
         .hero-slide:nth-child(3) {
-            background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 100%), url('assets/clubhouse.jpg');
+            background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 100%), url('assets/clubhouse.jpg');
         }
 
         .hero-content {
@@ -1892,6 +1892,16 @@ THANK-YOU OVERLAY
                 height: auto;
                 min-height: 100vh;
                 padding: 100px 0 60px;
+            }
+
+            .hero-slide.active {
+                opacity: 0.9;
+            }
+
+            .hero-slide:nth-child(1),
+            .hero-slide:nth-child(2),
+            .hero-slide:nth-child(3) {
+                background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.05) 100%);
             }
 
             .hero-content {
