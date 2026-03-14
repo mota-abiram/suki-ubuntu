@@ -1863,21 +1863,26 @@ THANK-YOU OVERLAY
                 align-items: flex-start;
                 padding-top: calc(var(--nav-h) + 60px);
             }
+
             .hero-title {
                 font-size: clamp(32px, 5vw, 48px);
                 margin-bottom: 12px;
             }
+
             .hero-subtitle {
                 font-size: 15px;
                 margin-bottom: 20px;
                 line-height: 1.5;
             }
+
             .hero-eyebrow {
                 margin-bottom: 16px;
             }
+
             .hero-chips {
                 margin-bottom: 12px;
             }
+
             .hero-rera {
                 margin-bottom: 20px;
             }
@@ -2020,18 +2025,17 @@ THANK-YOU OVERLAY
                 padding: 10px 6px;
                 font-size: 11px;
                 letter-spacing: 0.5px;
-                top: 45%; /* Move up from 90% */
+                top: 45%;
+                /* Move up from 90% */
                 border-radius: 6px 0 0 6px;
-                display: flex; /* Ensure visible */
+                display: flex;
+                /* Ensure visible */
             }
-            .floating-wa {
-                bottom: 80px; 
-                width: 50px;
-                height: 50px;
-            }
-            .floating-wa svg {
-                width: 28px;
-                height: 28px;
+
+            .sneha-bot {
+                bottom: 85px;
+                font-size: 14px;
+                right: 20px;
             }
 
             .overview-stats {
@@ -2307,55 +2311,52 @@ PHONE FIELD HINT
             color: #888;
             margin-top: 4px;
         }
+
         /* ============================================================ 
-           FLOATING WHATSAPP (CHATBOT)
+           SNEHA BOT
            ============================================================ */
-        .floating-wa {
+        .sneha-bot {
             position: fixed;
             bottom: 30px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            border-radius: 50%;
+            right: 25px;
+            z-index: 1000;
+            text-decoration: none;
+            color: var(--gold-light);
+            font-family: var(--font-serif);
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            transition: var(--transition);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            z-index: 1000;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-decoration: none;
-        }
-        .floating-wa:hover {
-            transform: scale(1.1);
-        }
-        .floating-wa svg {
-            width: 32px;
-            height: 32px;
-            fill: currentColor;
-        }
-        .wa-tooltip {
-            position: absolute;
-            right: 70px;
-            background: #fff;
-            color: #333;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            white-space: nowrap;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            pointer-events: none;
-            opacity: 0;
-            transform: translateX(10px);
-            transition: 0.3s;
-        }
-        .floating-wa:hover .wa-tooltip {
-            opacity: 1;
-            transform: translateX(0);
+            gap: 8px;
         }
 
+        .sneha-bot::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #2DB67D;
+            /* Online indicator */
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(45, 182, 125, 0.6);
+        }
+
+        .sneha-bot:hover {
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        @media(max-width: 600px) {
+            .sneha-bot {
+                bottom: 85px;
+                font-size: 14px;
+                right: 20px;
+            }
+        }
     </style>
 </head>
 
@@ -4200,14 +4201,10 @@ JAVASCRIPT
         ============================================================ */
     </script>
     <!-- ======================================================
-    FLOATING WHATSAPP (CHATBOT)
+    SNEHA BOT
     ====================================================== -->
-    <a href="https://wa.me/919647363636?text=Hi%2C+I'm+on+the+Sukhii+Ubuntu+website+and+have+a+question." 
-       class="floating-wa" target="_blank" rel="noopener" aria-label="Chat with Sneha on WhatsApp">
-        <div class="wa-tooltip">Chat with Sneha</div>
-        <svg viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-        </svg>
+    <a href="https://wa.me/919647363636?text=Hi%2C+I'm+on+the+Sukhii+Ubuntu+website+and+have+a+question."
+        class="sneha-bot" target="_blank" rel="noopener" aria-label="Talk to Sneha">
     </a>
 </body>
 
