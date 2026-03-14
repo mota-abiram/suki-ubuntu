@@ -872,63 +872,87 @@
         }
 
         /* ============================================================
-        SNEHA BOT
+        DOWNLOAD BROCHURE SIDEBAR CTA
         ============================================================ */
-        .sneha-bot {
+        .brochure-sidebar {
             position: fixed;
-            bottom: 30px;
-            right: 25px;
-            z-index: 1000;
-            text-decoration: none;
-            color: var(--gold-light);
-            font-family: var(--font-serif);
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: 2.5px;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%) translateX(100%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: slide-in-sidebar 0.6s 1.2s cubic-bezier(.175, .885, .32, 1.275) forwards;
+        }
+
+        @keyframes slide-in-sidebar {
+            to { transform: translateY(-50%) translateX(0); }
+        }
+
+        .brochure-sidebar-tab {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            background: var(--gold);
+            color: var(--forest-dark);
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            transition: var(--transition);
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            padding: 18px 10px;
+            border-radius: 8px 0 0 8px;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+            transition: background var(--transition), padding var(--transition);
+            text-decoration: none;
+            border: none;
+            outline: none;
         }
 
-        .sneha-bot::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: #2DB67D;
-            /* Online indicator */
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 0 10px rgba(45, 182, 125, 0.6);
+        .brochure-sidebar-tab:hover {
+            background: var(--gold-light);
+            padding-left: 14px;
         }
 
-        .sneha-bot:hover {
-            color: var(--white);
-            transform: translateY(-3px);
+        .brochure-sidebar-tab svg {
+            flex-shrink: 0;
+            transform: rotate(90deg);
         }
 
-        @media(max-width: 600px) {
-            .sneha-bot {
-                bottom: 85px;
-                font-size: 14px;
-                right: 20px;
+        @media (max-width: 600px) {
+            .brochure-sidebar {
+                top: auto;
+                bottom: 90px;
+                transform: translateX(100%);
+                animation: slide-in-sidebar-mobile 0.6s 1.2s cubic-bezier(.175, .885, .32, 1.275) forwards;
+            }
+            @keyframes slide-in-sidebar-mobile {
+                to { transform: translateX(0); }
             }
         }
 
-        @media(max-width: 600px) {
-            .floating-chat {
-                bottom: 80px;
-                width: 50px;
-                height: 50px;
-            }
-
-            .floating-chat svg {
-                width: 28px;
-                height: 28px;
-            }
+        /* Hide chatbot injected via GTM */
+        .collect-chat-widget,
+        #collect-chat-launcher,
+        iframe[src*="collect.chat"],
+        .cc-launcher,
+        #chat-bot-launcher-button,
+        .chat-bot-launcher-button,
+        [id*="chat-bot"],
+        [class*="chat-bot"],
+        [id*="chat-widget"],
+        [class*="chat-widget"],
+        [class*="chat-launcher"] {
+            display: none !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+            opacity: 0 !important;
         }
+
     </style>
 </head>
 
@@ -1094,6 +1118,21 @@
         </footer>
 
     </div><!-- /.page-wrap -->
+
+    <!-- ================================================
+    DOWNLOAD BROCHURE SIDEBAR CTA
+    ================================================ -->
+    <div class="brochure-sidebar">
+        <a class="brochure-sidebar-tab" href="brochure.pdf" download
+            onclick="gtmPush('cta_click',{cta_name:'Download Brochure Sidebar',page:'thankyou'});">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download Brochure
+        </a>
+    </div>
 
     <script>
         /* ============================================================
@@ -1281,23 +1320,16 @@
             }
         })();
 
-        /* ============================================================
-        STEP 5 — ANALYTICS CLEANUP
-        (Sheets submission removed to prevent duplicates)
-        ============================================================ */
-        (function cleanupSession() {
-            // Optional: clear specific session markers if needed
+        /* Remove chatbot injected by GTM */
+        (function () {
+            const selectors = ['.collect-chat-widget', '#collect-chat-launcher', '.cc-launcher', '#chat-bot-launcher-button', '.chat-bot-launcher-button', '[id*="chat-bot"]', '[class*="chat-bot"]', '[id*="chat-widget"]', '[class*="chat-launcher"]'];
+            const remove = () => selectors.forEach(sel => document.querySelectorAll(sel).forEach(el => el.remove()));
+            remove();
+            new MutationObserver(remove).observe(document.body, { childList: true, subtree: true });
         })();
 
     </script>
 
-    <!-- ================================================
-    SNEHA BOT
-    ================================================ -->
-    <a href="https://wa.me/919647363636?text=Hi%2C+I'm+on+the+Thank+You+page+and+have+a+question." class="sneha-bot"
-        target="_blank" rel="noopener" aria-label="Talk to Sneha">
-
-    </a>
 
 </body>
 
