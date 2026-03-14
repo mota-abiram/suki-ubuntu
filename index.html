@@ -1857,6 +1857,13 @@ THANK-YOU OVERLAY
         /* ============================================================
         RESPONSIVE MEDIA QUERIES
         ============================================================ */
+        /* Standard laptops (e.g. 1366x768), excluding high-DPI Macbooks */
+        @media screen and (min-width: 1024px) and (max-width: 1440px) and (-webkit-max-device-pixel-ratio: 1.5) {
+            body {
+                zoom: 0.9;
+            }
+        }
+
         @media(max-width: 1024px) {
             .usps-grid {
                 grid-template-columns: repeat(2, 1fr);
