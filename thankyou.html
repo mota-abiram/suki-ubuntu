@@ -792,14 +792,10 @@
         /* ============================================================
         RESPONSIVE
         ============================================================ */
-        /* Standard laptops (e.g. 1366x768), excluding high-DPI Macbooks */
-        @media screen and (min-width: 1024px) and (max-width: 1440px) and (-webkit-max-device-pixel-ratio: 1.5) {
-            body {
-                zoom: 0.9;
-            }
-
+        /* Small height or standard laptops (e.g. 1366x768) */
+        @media screen and (min-width: 1024px) and (max-height: 800px) {
             .ty-hero {
-                padding: 60px 20px 30px;
+                padding: 40px 20px 20px;
             }
         }
 
