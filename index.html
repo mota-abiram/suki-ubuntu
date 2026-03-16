@@ -3886,12 +3886,32 @@ JAVASCRIPT
                 });
             }
 
-            /* 2. CRM Webhook */
-            if (LP_CONFIG.ENABLE_CRM && LP_CONFIG.CRM_WEBHOOK_URL && LP_CONFIG.CRM_WEBHOOK_URL.indexOf('example') === -1) {
-                fetch(LP_CONFIG.CRM_WEBHOOK_URL, {
+            /* 2. RemSERP CRM */
+            if (LP_CONFIG.ENABLE_CRM) {
+                var phone = (payload.phone || '').replace(/^\+91/, '').trim();
+                var crmParams = new URLSearchParams({
+                    UID: 'fourqt',
+                    PWD: 'wn9mxO76f34=',
+                    Channel: 'DMG',
+                    Src: 'Digital Mojo Google',
+                    ISD: '91',
+                    Mob: phone,
+                    Email: payload.email || '',
+                    name: payload.name || '',
+                    City: 'Hyderabad',
+                    Location: 'Puppalaguda',
+                    Project: 'Sukhii Ubuntu',
+                    Remark: payload.form_id || '',
+                    url: payload.page_url || '',
+                    UniqueId: '0',
+                    fld1: payload.utm_source || '',
+                    fld2: payload.utm_campaign || '',
+                    fld3: payload.utm_medium || '',
+                    fld4: payload.utm_term || ''
+                });
+                fetch('https://sukhii07.remserp.com/WebCreate.aspx?' + crmParams.toString(), {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
+                    mode: 'no-cors'
                 }).catch(function (err) {
                     console.warn('[Sukhii LP] CRM submission error:', err);
                 });
