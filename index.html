@@ -581,6 +581,12 @@ SITELINKS BAR
             overflow-x: auto;
         }
 
+        @media (max-width: 768px) {
+            #sitelinks {
+                display: none;
+            }
+        }
+
         .sitelinks-row {
             display: flex;
             gap: 0;
@@ -1957,7 +1963,33 @@ THANK-YOU OVERLAY
             }
 
             .usps-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+                margin-top: 28px;
+            }
+
+            .usps-grid .usp-card:last-child:nth-child(odd) {
+                grid-column: 1 / -1;
+            }
+
+            .usp-card {
+                padding: 20px 16px;
+                border-radius: 12px;
+            }
+
+            .usp-icon {
+                width: 44px;
+                height: 44px;
+                margin: 0 auto 12px;
+            }
+
+            .usp-card h4 {
+                font-size: 15px;
+                margin-bottom: 6px;
+            }
+
+            .usp-card p {
+                font-size: 13px;
             }
 
             .lead-form-card,
