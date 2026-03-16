@@ -3288,7 +3288,7 @@ LOCATION (category dropdowns – change #5)
             <div class="location-grid">
                 <div class="location-map-wrap">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.233!2d78.3480!3d17.4008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93b9b2e5b5b5%3A0x1234567890abcdef!2sPuppalaguda%2C%20Hyderabad!5e0!3m2!1sen!2sin!4v1680000000000"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.0!2d78.3606113!3d17.4069153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb95cffb04a357%3A0x92237e2e9d6fa4b5!2sSukhii%20Ubuntu!5e0!3m2!1sen!2sin!4v1710000000000"
                         allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                         title="Sukhii Ubuntu location map"></iframe>
                 </div>
@@ -3693,7 +3693,7 @@ POPUP MODAL
 SIDE TAB BUTTON
 ====================================================== -->
     <button id="side-tab"
-        onclick="downloadBrochure(); openPopup('Download Brochure','Enter your details and we\'ll send the brochure and floor plans directly to your WhatsApp &amp; email.');gtmPush('cta_click',{property_name:'Sukhii Ubuntu',cta_name:'Download Brochure',page_section:'side_tab'});"
+        onclick="_pendingBrochure=true; openPopup('Download Brochure','Enter your details and we\'ll send the brochure and floor plans directly to your WhatsApp &amp; email.');gtmPush('cta_click',{property_name:'Sukhii Ubuntu',cta_name:'Download Brochure',page_section:'side_tab'});"
         aria-label="Download brochure">
         DOWNLOAD BROCHURE
     </button>
@@ -4193,6 +4193,12 @@ JAVASCRIPT
 
             submitLead(leadData);
 
+            /* --- Download brochure if triggered from Download Brochure button --- */
+            if (window._pendingBrochure) {
+                window._pendingBrochure = false;
+                downloadBrochure();
+            }
+
             /* --- Redirect to standalone Thank You page (with full attribution) --- */
             closePopup();
             var refId = LP_CONFIG.PROPERTY_REF + '-' + Date.now().toString(36).toUpperCase();
@@ -4390,6 +4396,7 @@ JAVASCRIPT
         function closePopup() {
             document.getElementById('popup').classList.remove('open');
             document.body.style.overflow = '';
+            window._pendingBrochure = false;
         }
         document.getElementById('popup').addEventListener('click', function (e) {
             if (e.target === this) closePopup();
