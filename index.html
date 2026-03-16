@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Sukhii Ubuntu – Premium 2/3/4 BHK Apartments in Puppalaguda, Hyderabad</title>
+    <title>Sukhi Ubuntu – Premium 2/3/4 BHK Apartments in Puppalaguda, Hyderabad</title>
     <meta name="description"
-        content="Sukhii Ubuntu – IGBC Platinum rated residences in Puppalaguda. 2/3/4 BHK from ₹1.36 Cr. Book a site visit today." />
+        content="Sukhi Ubuntu – IGBC Platinum rated residences in Puppalaguda. 2/3/4 BHK from ₹1.36 Cr. Book a site visit today." />
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
@@ -43,6 +43,7 @@ CSS CUSTOM PROPERTIES
             --font-serif: 'Cormorant Garamond', Georgia, serif;
             --font-sans: 'DM Sans', system-ui, sans-serif;
             --nav-h: 70px;
+            --header-h: var(--nav-h);
             --radius: 12px;
             --shadow: 0 4px 24px rgba(0, 0, 0, .12);
             --transition: 0.3s ease;
@@ -59,6 +60,7 @@ CSS CUSTOM PROPERTIES
         html {
             scroll-behavior: smooth;
             overflow-x: hidden;
+            scroll-padding-top: var(--header-h);
         }
 
         body {
@@ -66,6 +68,8 @@ CSS CUSTOM PROPERTIES
             color: var(--text-dark);
             background: var(--white);
             overflow-x: hidden;
+            padding-bottom: 72px;
+            /* space for sticky bottom bar */
         }
 
         img {
@@ -245,6 +249,58 @@ NAVBAR
 
 
 
+        /* Inline desktop nav links inside the navbar */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav-link-item {
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .75);
+            padding: 6px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+            transition: color .2s, background .2s;
+            position: relative;
+        }
+
+        .nav-link-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            right: 10px;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform .25s ease;
+        }
+
+        .nav-link-item:hover,
+        .nav-link-item.active {
+            color: var(--gold-light);
+        }
+
+        .nav-link-item:hover::after,
+        .nav-link-item.active::after {
+            transform: scaleX(1);
+        }
+
+        @media (max-width: 960px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
         .nav-cta {
             background: var(--gold);
             color: var(--white);
@@ -266,6 +322,102 @@ NAVBAR
 
             .nav-logo-img {
                 height: 40px;
+            }
+        }
+
+        /* ============================================================
+HAMBURGER / MOBILE NAV
+============================================================ */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            padding: 4px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 769px) {
+            .nav-hamburger {
+                display: none !important;
+            }
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: transform .3s ease, opacity .3s ease;
+            transform-origin: center;
+        }
+
+        .nav-hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        #mobile-nav {
+            display: none;
+            position: fixed;
+            top: var(--nav-h);
+            left: 0;
+            right: 0;
+            background: var(--forest-dark);
+            z-index: 999;
+            border-bottom: 1px solid rgba(196, 151, 58, .25);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .3);
+        }
+
+        #mobile-nav.open {
+            display: block;
+        }
+
+        .mobile-nav-list {
+            list-style: none;
+            padding: 8px 0;
+        }
+
+        .mobile-nav-list a {
+            display: block;
+            padding: 14px 24px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .75);
+            border-bottom: 1px solid rgba(255, 255, 255, .06);
+            transition: color .2s, background .2s;
+        }
+
+        .mobile-nav-list a:hover {
+            color: var(--gold-light);
+            background: rgba(196, 151, 58, .08);
+        }
+
+        /* Show hamburger whenever inline nav-links are hidden */
+        @media (max-width: 960px) {
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .nav-cta {
+                font-size: 12px;
+                padding: 10px 16px;
             }
         }
 
@@ -575,10 +727,8 @@ LEAD FORM SECTION (standalone – change #3)
 SITELINKS BAR
 ============================================================ */
         #sitelinks {
-            background: var(--cream);
-            border-bottom: 1px solid var(--cream-dark);
-            padding: 18px 0;
-            overflow-x: auto;
+            display: none;
+            /* nav links moved into navbar; kept in DOM for scroll-spy JS */
         }
 
         @media (max-width: 768px) {
@@ -589,28 +739,59 @@ SITELINKS BAR
 
         .sitelinks-row {
             display: flex;
-            gap: 0;
-            white-space: nowrap;
-            min-width: max-content;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
         .sitelink-item {
-            padding: 8px 24px;
-            font-size: 14px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 12px;
+            font-family: var(--font-sans);
+            font-size: 12.5px;
             font-weight: 500;
-            color: var(--forest);
-            border-right: 1px solid #d9d0c3;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            color: rgba(255, 255, 255, .6);
+            border-right: 1px solid rgba(255, 255, 255, .08);
             cursor: pointer;
-            transition: color .2s, background .2s;
+            transition: color .25s, background .25s;
+            position: relative;
+            text-align: center;
         }
 
-        .sitelink-item:last-child {
-            border-right: none;
+        .sitelink-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform .25s ease;
         }
 
-        .sitelink-item:hover {
-            color: var(--gold);
-            background: rgba(196, 151, 58, .06);
+        .sitelink-item:first-child {
+            border-left: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .sitelink-item:hover,
+        .sitelink-item.active {
+            color: var(--gold-light);
+            background: rgba(196, 151, 58, .08);
+        }
+
+        .sitelink-item:hover::after,
+        .sitelink-item.active::after {
+            transform: scaleX(1);
         }
 
         /* ============================================================
@@ -1888,7 +2069,7 @@ THANK-YOU OVERLAY
         @media(max-width: 768px) {
             #hero {
                 height: auto;
-                min-height: 100vh;
+                min-height: 100svh;
                 padding: 100px 0 60px;
             }
 
@@ -1908,8 +2089,44 @@ THANK-YOU OVERLAY
             .btn-primary,
             .btn-outline {
                 width: 100%;
+                justify-content: center;
             }
 
+            /* Tighter section padding on mobile */
+            section {
+                padding-top: 56px !important;
+                padding-bottom: 56px !important;
+            }
+
+            .section-title {
+                font-size: clamp(24px, 7vw, 38px);
+            }
+
+            .section-desc {
+                font-size: 14px;
+            }
+
+            /* Overview section */
+            .overview-grid,
+            .walkthrough-inner,
+            .closing-inner,
+            .form-section-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .overview-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            /* USPs */
+            .usps-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+
+            /* Amenities tabs */
             .amenity-tabs {
                 justify-content: flex-start;
                 overflow-x: auto;
@@ -1932,40 +2149,71 @@ THANK-YOU OVERLAY
                 padding: 8px 16px;
             }
 
+            /* Floor plans */
             .plans-grid {
                 grid-template-columns: 1fr;
             }
 
+            /* Location */
+            .location-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .location-map-wrap iframe {
+                height: 260px;
+            }
+
+            /* Gallery */
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            /* Testimonials */
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Thank you */
             .ty-grid {
                 grid-template-columns: 1fr;
             }
 
+            /* Developer stats */
             .developer-stats {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
                 gap: 12px;
             }
 
-            .overview-stats {
-                grid-template-columns: 1fr 1fr;
-            }
-
+            /* Side tab — move up from sticky bar */
             #side-tab {
                 padding: 8px 6px;
                 font-size: 11px;
-                top: 85%;
+                top: 50%;
                 border-radius: 6px 0 0 6px;
+            }
+
+            /* Forms */
+            .form-row {
+                flex-direction: column;
+            }
+
+            .popup-box {
+                padding: 28px 20px;
+                max-height: 90vh;
+                overflow-y: auto;
             }
         }
 
         @media(max-width: 600px) {
             .hero-title {
-                font-size: clamp(30px, 10vw, 42px);
+                font-size: clamp(28px, 9vw, 40px);
             }
 
             .usps-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 14px;
-                margin-top: 28px;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
             }
 
             .usps-grid .usp-card:last-child:nth-child(odd) {
@@ -1973,60 +2221,35 @@ THANK-YOU OVERLAY
             }
 
             .usp-card {
-                padding: 20px 16px;
+                padding: 18px 14px;
                 border-radius: 12px;
             }
 
             .usp-icon {
-                width: 44px;
-                height: 44px;
-                margin: 0 auto 12px;
+                width: 40px;
+                height: 40px;
+                margin: 0 auto 10px;
             }
 
             .usp-card h4 {
-                font-size: 15px;
+                font-size: 14px;
                 margin-bottom: 6px;
             }
 
             .usp-card p {
-                font-size: 13px;
+                font-size: 12px;
             }
 
             .lead-form-card,
             .closing-form-wrap {
-                padding: 28px 20px;
+                padding: 24px 16px;
             }
-
-            #sticky-bar {
-                flex-wrap: wrap;
-                gap: 6px;
-                padding: 8px 12px;
-            }
-
-            .sticky-btn {
-                flex: 1 1 45%;
-                font-size: 11px;
-                padding: 10px 6px;
-                min-height: 48px;
-            }
-
-            .sticky-btn.sticky-enq {
-                flex: 1 1 100%;
-            }
-
-            #side-tab {
-                padding: 10px 6px;
-                font-size: 11px;
-                letter-spacing: 0.5px;
-                top: 45%;
-                /* Move up from 90% */
-                border-radius: 6px 0 0 6px;
-                display: flex;
-                /* Ensure visible */
-            }
-
 
             .overview-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -2316,15 +2539,61 @@ PHONE FIELD HINT
 NAVBAR
 ====================================================== -->
     <nav id="navbar" role="navigation" aria-label="Main navigation">
-        <div class="nav-inner">
+        <div class="nav-inner" style="position:relative;">
             <a class="nav-logo" href="#hero">
                 <img src="Ubuntu-Logo.svg" alt="Sukhii Ubuntu Logo" class="nav-logo-img">
             </a>
-            <button class="nav-cta"
-                onclick="openPopup('Enquire Now','Get in touch with our team for pricing and availability.');">Enquire
-                Now</button>
+            <!-- Desktop inline nav links (centred) -->
+            <div class="nav-links">
+                <a class="nav-link-item" href="#overview">Overview</a>
+                <a class="nav-link-item" href="#usps">Highlights</a>
+                <a class="nav-link-item" href="#amenities">Amenities</a>
+                <a class="nav-link-item" href="#specifications">Specifications</a>
+                <a class="nav-link-item" href="#location">Location</a>
+                <a class="nav-link-item" href="#floor-plans">Floor Plans</a>
+                <a class="nav-link-item" href="#gallery">Gallery</a>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button class="nav-cta"
+                    onclick="openPopup('Enquire Now','Get in touch with our team for pricing and availability.');">Enquire
+                    Now</button>
+                <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false"
+                    aria-controls="mobile-nav">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
     </nav>
+
+    <!-- Mobile nav dropdown -->
+    <div id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+        <ul class="mobile-nav-list">
+            <li><a href="#overview" class="mobile-nav-link">Overview</a></li>
+            <li><a href="#usps" class="mobile-nav-link">Highlights</a></li>
+            <li><a href="#amenities" class="mobile-nav-link">Amenities</a></li>
+            <li><a href="#specifications" class="mobile-nav-link">Specifications</a></li>
+            <li><a href="#location" class="mobile-nav-link">Location</a></li>
+            <li><a href="#floor-plans" class="mobile-nav-link">Floor Plans</a></li>
+            <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
+        </ul>
+    </div>
+
+    <!-- ======================================================
+SITELINKS
+====================================================== -->
+    <div id="sitelinks" role="navigation" aria-label="Page sections">
+        <div class="container">
+            <div class="sitelinks-row">
+                <a class="sitelink-item" href="#overview">Overview</a>
+                <a class="sitelink-item" href="#usps">Highlights</a>
+                <a class="sitelink-item" href="#amenities">Amenities</a>
+                <a class="sitelink-item" href="#specifications">Specifications</a>
+                <a class="sitelink-item" href="#location">Location</a>
+                <a class="sitelink-item" href="#floor-plans">Floor Plans</a>
+                <a class="sitelink-item" href="#gallery">Gallery</a>
+            </div>
+        </div>
+    </div>
 
     <!-- ======================================================
 HERO SECTION
@@ -2339,7 +2608,7 @@ HERO SECTION
                     </svg>
                     IGBC Platinum Certified &middot; Puppalaguda, Hyderabad
                 </div>
-                <h2 class="hero-title"><em>Sukhi Ubuntu</em><br>Elevated Living in the Heart of West Hyderabad</h2>
+                <h2 class="hero-title"><em>Sukhi Ubuntu</em><br>Elevated Living in the Heart of<br> West Hyderabad</h2>
                 <p class="hero-subtitle">A landmark residential community, bringing together modern architecture, green
                     living, and vibrant community spaces, just minutes from Financial District.</p>
                 <div class="hero-chips">
@@ -2463,7 +2732,7 @@ LEAD FORM SECTION (second section – change #3)
                             </div>
                             <p class="field-error" id="hf-phone-err">Enter a valid 10-digit number starting with 6, 7, 8
                                 or 9.</p>
-                            <p class="phone-hint">Must start with 6, 7, 8 or 9 &mdash; no spaces or country code needed.
+                            <p class="phone-hint">Must start with 6, 7, 8 or 9. No spaces or country code needed.
                             </p>
                         </div>
                         <button type="submit" class="form-submit-btn">Submit Now</button>
@@ -2476,23 +2745,6 @@ LEAD FORM SECTION (second section – change #3)
     </section>
 
     <!-- ======================================================
-SITELINKS
-====================================================== -->
-    <div id="sitelinks" role="navigation" aria-label="Page sections">
-        <div class="container">
-            <div class="sitelinks-row">
-                <a class="sitelink-item" href="#overview">Overview</a>
-                <a class="sitelink-item" href="#usps">Highlights</a>
-                <a class="sitelink-item" href="#amenities">Amenities</a>
-                <a class="sitelink-item" href="#specifications">Specifications</a>
-                <a class="sitelink-item" href="#location">Location</a>
-                <a class="sitelink-item" href="#floor-plans">Floor Plans</a>
-                <a class="sitelink-item" href="#gallery">Gallery</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- ======================================================
 PROJECT OVERVIEW
 ====================================================== -->
     <section id="overview" class="reveal" aria-label="Project overview">
@@ -2500,13 +2752,13 @@ PROJECT OVERVIEW
             <div class="overview-grid">
                 <div>
                     <p class="section-label">About the Project</p>
-                    <h2 class="section-title">Sukhii <span>Ubuntu</span> — Designed for Living, Made for Belonging</h2>
+                    <h2 class="section-title">Sukhii <span>Ubuntu</span>: Designed for Living, Made for Belonging</h2>
                     <p class="section-desc">Spread across 5.25 lush acres in Puppalaguda, Sukhii Ubuntu is a landmark
                         residential community comprising 3 towers of 36 storeys each, home to 855 thoughtfully designed
                         apartments. Every single unit is a corner flat, no shared walls, abundant natural light, and
                         unobstructed views.</p>
-                    <p class="section-desc" style="margin-top:12px;">Rooted in the African philosophy of Ubuntu — "I am
-                        because we are" — this development is not just a residence. It is a neighbourhood designed to
+                    <p class="section-desc" style="margin-top:12px;">Rooted in the African philosophy of Ubuntu, "I am
+                        because we are", this development is not just a residence. It is a neighbourhood designed to
                         celebrate life together.</p>
                     <div class="overview-stats">
                         <div class="stat-box">
@@ -2541,8 +2793,7 @@ USP SECTION
     <section id="usps" class="reveal" aria-label="Project highlights">
         <div class="container">
             <div style="text-align:center;">
-                <p class="section-label">Why Ubuntu</p>
-                <h2 class="section-title">What Sets Us <span>Apart</span></h2>
+                <h2 class="section-title">Why Sukhii <span>Ubuntu</span></h2>
                 <p class="section-desc" style="margin:12px auto 0;">Every detail at Sukhii Ubuntu is designed to elevate
                     the way you live, breathe, and belong. Here's what makes it unlike anything else in Hyderabad.</p>
             </div>
@@ -2591,7 +2842,7 @@ USP SECTION
                         </svg>
                     </div>
                     <h4>Award-Winning Sustainability</h4>
-                    <p>Recognised as Best Eco-Friendly Sustainable Project — Times Business 2024. Natural ventilation
+                    <p>Recognised as Best Eco-Friendly Sustainable Project, Times Business 2024. Natural ventilation
                         design, eco-friendly roofing, and EV charging stations built in.</p>
                 </div>
                 <div class="usp-card">
@@ -2603,7 +2854,7 @@ USP SECTION
                         </svg>
                     </div>
                     <h4>Prime Location</h4>
-                    <p>At Puppalaguda — just 2 minutes from the Financial District, 15 minutes from HITEC City, and
+                    <p>At Puppalaguda, just 2 minutes from the Financial District, 15 minutes from HITEC City, and
                         0.5km
                         from the Outer Ring Road. At the epicentre of West Hyderabad's growth corridor.</p>
                 </div>
@@ -2617,9 +2868,10 @@ AMENITIES
     <section id="amenities" class="reveal" aria-label="Amenities">
         <div class="container">
             <p class="section-label">Lifestyle &amp; Amenities</p>
-            <h2 class="section-title">Everything You Need,<span> Here</span></h2>
-            <p class="section-desc">Over 70 curated amenities across 1,00,000+ sq.ft — two fully-equipped clubhouses,
-                sprawling outdoor zones, and dedicated spaces for every age and interest.</p>
+            <h2 class="section-title">70+ Amenities. One <span>Extraordinary Lifestyle</span></h2>
+            <p class="section-desc">Spread across 1,00,000+ sq. ft. of thoughtfully designed amenity spaces, features
+                two fully-equipped clubhouses, vibrant social zones, and peaceful outdoor retreats that enhance everyday
+                living for every age.</p>
             <div class="amenity-tabs" role="tablist">
                 <button class="amenity-tab active" role="tab" aria-selected="true"
                     onclick="switchAmenityTab(this,'skydeck')">&#127748; Sky Deck</button>
@@ -2813,7 +3065,7 @@ PROJECT SPECIFICATIONS (change #6 – new section)
         <div class="container">
             <p class="section-label">Specifications</p>
             <h2 class="section-title">Project <span>Specifications</span></h2>
-            <p class="section-desc">Built with precision by a team of qualified Civil Engineers — every structural,
+            <p class="section-desc">Built with precision by a team of qualified Civil Engineers. Every structural,
                 finishing, and safety element designed to last.</p>
             <div class="specs-accordion" id="specs-accordion">
 
@@ -2932,7 +3184,7 @@ TESTIMONIALS
                     <p class="testimonial-text">“A truly premium gated community. The sky deck, all corner flats, and
                         thoughtfully designed amenities make the project stand out. With excellent connectivity to major
                         IT campuses, the location is incredibly convenient. Everything about the project feels very well
-                        planned and organised — truly a game changer”</p>
+                        planned and organised. Truly a game changer.”</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">PY</div>
                         <div>
@@ -2995,10 +3247,10 @@ WALKTHROUGH VIDEO
                     <p class="section-label">Virtual Walkthrough</p>
                     <h2 class="section-title">See Ubuntu<br /><span>Come to Life</span></h2>
                     <p class="section-desc">Walk through Hyderabad's first skydeck, explore our 100% corner flat
-                        layouts, and experience the connected sky terraces — all before your site visit.</p>
+                        layouts, and experience the connected sky terraces, all before your site visit.</p>
                     <div class="walk-features">
                         <div class="walk-feat">
-                            <div class="walk-check">&#10003;</div>Skydeck at 400 feet — fully rendered views
+                            <div class="walk-check">&#10003;</div>Skydeck at 400 feet with fully rendered views
                         </div>
                         <div class="walk-feat">
                             <div class="walk-check">&#10003;</div>100% corner flat layouts across 2, 3 &amp; 4 BHK
@@ -3020,10 +3272,10 @@ LOCATION (category dropdowns – change #5)
 ====================================================== -->
     <section id="location" class="reveal" aria-label="Location highlights">
         <div class="container">
-            <p class="section-label">Location Advantage</p>
-            <h2 class="section-title">Puppalaguda &mdash; <span>Connected to Everything</span></h2>
-            <p class="section-desc">Strategically positioned at the convergence of West Hyderabad's most connected
-                corridors.</p>
+            <p class="section-label">Location</p>
+            <h2 class="section-title">Location Advantage: <span>Effortlessly Connected</span></h2>
+            <p class="section-desc">Strategically located in Puppalaguda, at the convergence of West Hyderabad's most
+                connected corridors.</p>
             <div class="location-grid">
                 <div class="location-map-wrap">
                     <iframe
@@ -3105,7 +3357,7 @@ FLOOR PLANS
         <div class="container">
             <p class="section-label">Floor Plans</p>
             <h2 class="section-title">Choose Your <span>Perfect Home</span></h2>
-            <p class="section-desc">Every layout is a corner flat — designed for maximum light, ventilation, and
+            <p class="section-desc">Every layout is a corner flat, designed for maximum light, ventilation, and
                 privacy. Vastu-compliant. Available in three configurations.
             </p>
             <div class="plans-grid">
@@ -3245,7 +3497,7 @@ FAQ
                 <div class="faq-item">
                     <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0">What makes Ubuntu
                         eco-friendly?<span class="faq-icon">+</span></div>
-                    <div class="faq-a">Ubuntu is IGBC Platinum pre-rated — the highest green certification in India. It
+                    <div class="faq-a">Ubuntu is IGBC Platinum pre-rated, the highest green certification in India. It
                         features solar water heaters, EV charging stations, a sewage treatment plant, rainwater
                         harvesting, natural ventilation design, and eco-friendly roofing.</div>
                 </div>
@@ -3253,14 +3505,15 @@ FAQ
                     <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0">What is the Skydeck?<span
                             class="faq-icon">+</span></div>
                     <div class="faq-a">At 400 feet above ground, the interconnected terraces of all three towers merge
-                        to form an entire world in the sky — with Community Gardens, a Party Lawn, Jogging Track, Mini
+                        to form an entire world in the sky, featuring Community Gardens, a Party Lawn, Jogging Track,
+                        Mini
                         Golf, Community Dining, Nectar &amp; Flowering Gardens, a Yoga Court, and Reading Corners. It is
                         Hyderabad's first skydeck, and the only one you can truly live in.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0">Who is the finance partner
                         for this project?<span class="faq-icon">+</span></div>
-                    <div class="faq-a">Sukhii Ubuntu is funded and mortgaged with Tata Capital — one of India's most
+                    <div class="faq-a">Sukhii Ubuntu is funded and mortgaged with Tata Capital, one of India's most
                         trusted financial institutions. This is a strong marker of project credibility, financial
                         discipline, and delivery commitment.</div>
                 </div>
@@ -3310,7 +3563,7 @@ CLOSING SECTION (replaces footer – change #7)
                     <div class="developer-name">Sukhii Group</div>
                     <p style="font-size:14px;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:22px;">Sukhii
                         Group is a Hyderabad-based residential developer with a completed track record across the city.
-                        What sets the team apart is that every member is a qualified Civil Engineer — bringing
+                        What sets the team apart is that every member is a qualified Civil Engineer, bringing
                         construction precision and technical depth to every project. Ubuntu is their flagship luxury
                         offering, embodying the philosophy of "I am because we are."</p>
                     <div class="developer-stats">
@@ -3354,7 +3607,7 @@ CLOSING SECTION (replaces footer – change #7)
                             </div>
                             <p class="field-error" id="cf-phone-err">Enter a valid 10-digit number starting with 6, 7, 8
                                 or 9.</p>
-                            <p class="phone-hint">Must start with 6, 7, 8 or 9 &mdash; no spaces or country code needed.
+                            <p class="phone-hint">Must start with 6, 7, 8 or 9. No spaces or country code needed.
                             </p>
                         </div>
                         <button type="submit" class="form-submit-btn">Submit Now</button>
@@ -3382,15 +3635,6 @@ CLOSING SECTION (replaces footer – change #7)
 STICKY BOTTOM BAR
 ====================================================== -->
     <div id="sticky-bar" role="complementary" aria-label="Quick contact options">
-
-        <button class="sticky-btn sticky-call"
-            onclick="window.location.href='tel:+919647363636';gtmPush('cta_click',{property_name:'Sukhii Ubuntu',cta_name:'Call Now',page_section:'sticky_bar'});">
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path
-                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.79 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z" />
-            </svg>
-            Call Now
-        </button>
         <button class="sticky-btn sticky-enq"
             onclick="openPopup('Enquire Now','Get exclusive pricing and availability details.');gtmPush('cta_click',{property_name:'Sukhii Ubuntu',cta_name:'Enquire Now',page_section:'sticky_bar'});">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -3428,7 +3672,7 @@ POPUP MODAL
                     </div>
                     <p class="field-error" id="pf-phone-err">Enter a valid 10-digit number starting with 6, 7, 8 or 9.
                     </p>
-                    <p class="phone-hint">Must start with 6, 7, 8 or 9 &mdash; no country code needed.</p>
+                    <p class="phone-hint">Must start with 6, 7, 8 or 9. No country code needed.</p>
                 </div>
                 <button type="submit" class="form-submit-btn">Submit Now</button>
                 <p class="form-disclaimer">Your information is 100% secure. No spam, ever.</p>
@@ -3440,9 +3684,9 @@ POPUP MODAL
 SIDE TAB BUTTON
 ====================================================== -->
     <button id="side-tab"
-        onclick="openPopup('Enquire Now','Get exclusive pricing and availability details.');gtmPush('cta_click',{property_name:'Sukhii Ubuntu',cta_name:'Side Tab',page_section:'side_tab'});"
-        aria-label="Enquire now">
-        ENQUIRE NOW
+        onclick="downloadBrochure(); openPopup('Download Brochure','Enter your details and we\'ll send the brochure and floor plans directly to your WhatsApp &amp; email.');gtmPush('cta_click',{property_name:'Sukhii Ubuntu',cta_name:'Download Brochure',page_section:'side_tab'});"
+        aria-label="Download brochure">
+        DOWNLOAD BROCHURE
     </button>
 
     <!-- ======================================================
@@ -3472,7 +3716,7 @@ ENHANCED THANK-YOU PAGE
                 <div class="ty-card">
                     <div class="ty-card-ico">&#127968;</div>
                     <h4>Site Visit Scheduled</h4>
-                    <p>Visit our experience centre at Puppalaguda — Mon to Sun, 10am – 7pm.</p>
+                    <p>Visit our experience centre at Puppalaguda. Mon to Sun, 10am to 7pm.</p>
                 </div>
             </div>
 
@@ -3503,7 +3747,7 @@ ENHANCED THANK-YOU PAGE
                     <div class="ty-step-num">4</div>
                     <div class="ty-step-text">
                         <strong>Exclusive Pricing Access</strong>
-                        <span>Early enquirers get pre-launch pricing — limited units remaining.</span>
+                        <span>Early enquirers get pre-launch pricing. Limited units remaining.</span>
                     </div>
                 </div>
             </div>
@@ -3682,6 +3926,16 @@ JAVASCRIPT
             /* Block obvious test numbers */
             if (/^(.)\1{9}$/.test(clean)) return { ok: false, msg: 'Please enter a real mobile number.' };
             return { ok: true };
+        }
+
+        /* --- Download Brochure Helper --- */
+        function downloadBrochure() {
+            var link = document.createElement('a');
+            link.href = 'mini brochure.pdf';
+            link.download = 'mini brochure.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         function validateEmail(val) {
@@ -3992,6 +4246,70 @@ JAVASCRIPT
         window.addEventListener('scroll', function () {
             navbar.classList.toggle('scrolled', window.scrollY > 60);
         }, { passive: true });
+
+        /* ============================================================
+        MOBILE HAMBURGER MENU
+        ============================================================ */
+        (function () {
+            var btn = document.getElementById('nav-hamburger');
+            var mobileNav = document.getElementById('mobile-nav');
+            if (!btn || !mobileNav) return;
+
+            btn.addEventListener('click', function () {
+                var isOpen = mobileNav.classList.toggle('open');
+                btn.classList.toggle('open', isOpen);
+                btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+                // Force navbar solid background when menu is open so it connects seamlessly
+                if (isOpen) {
+                    navbar.classList.add('scrolled');
+                } else if (window.scrollY <= 60) {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Close on link click
+            mobileNav.querySelectorAll('.mobile-nav-link').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    mobileNav.classList.remove('open');
+                    btn.classList.remove('open');
+                    btn.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                    if (window.scrollY <= 60) {
+                        navbar.classList.remove('scrolled');
+                    }
+                });
+            });
+        }());
+
+        /* ============================================================
+        SITELINKS ACTIVE STATE
+        ============================================================ */
+        (function () {
+            var sitelinkItems = document.querySelectorAll('.sitelink-item');
+            var navLinkItems = document.querySelectorAll('.nav-link-item');
+            var allLinkGroups = [sitelinkItems, navLinkItems];
+            var sections = Array.from(sitelinkItems).map(function (l) {
+                return document.querySelector(l.getAttribute('href'));
+            });
+            var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 70;
+            var offset = navH + 10;
+
+            function setActive() {
+                var scrollY = window.scrollY + offset;
+                var current = 0;
+                sections.forEach(function (sec, i) {
+                    if (sec && sec.offsetTop <= scrollY) current = i;
+                });
+                allLinkGroups.forEach(function (links) {
+                    links.forEach(function (l, i) {
+                        l.classList.toggle('active', i === current);
+                    });
+                });
+            }
+            window.addEventListener('scroll', setActive, { passive: true });
+            setActive();
+        })();
 
 
         /* ============================================================
