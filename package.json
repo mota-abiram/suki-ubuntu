@@ -5,7 +5,9 @@
   "main": "index.html",
   "scripts": {
     "start": "npx serve .",
-    "share": "npx localtunnel --port 3000"
+    "share": "npx localtunnel --port 3000",
+    "build": "bash build.sh",
+    "serve:dist": "npx serve dist"
   },
   "keywords": [],
   "author": "",

@@ -6,18 +6,19 @@
     <title>Privacy Policy – Sukhii Ubuntu</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Gambarino&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
     <style>
         :root {
-            --forest: #1B4D35;
-            --forest-dark: #0F2D1E;
-            --gold: #C4973A;
-            --gold-light: #E8C46A;
-            --cream: #F9F5EE;
+            --forest: #3A3A3A;
+            --forest-dark: #2F2F2F;
+            --gold: #E8A855;
+            --gold-light: #F0C67A;
+            --cream: #F5F2EC;
             --white: #ffffff;
-            --text-dark: #1A1A1A;
-            --text-mid: #4A4A4A;
-            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --text-dark: #2F2F2F;
+            --text-mid: #6B6B6B;
+            --brand-gradient: linear-gradient(135deg, #FF8A00, #FF3CAC, #784BA0, #2B86C5);
+            --font-serif: 'Gambarino', Georgia, serif;
             --font-sans: 'DM Sans', system-ui, sans-serif;
         }
 
@@ -65,9 +66,13 @@
         .page-title {
             font-family: var(--font-serif);
             font-size: clamp(32px, 5vw, 48px);
-            font-weight: 600;
-            color: var(--forest-dark);
+            font-weight: 400;
+            color: var(--text-dark);
             margin-bottom: 8px;
+            background: url('gradient-01.jpeg') center/cover no-repeat;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .last-updated {
@@ -80,10 +85,10 @@
             font-family: var(--font-serif);
             font-size: 22px;
             font-weight: 600;
-            color: var(--forest);
+            color: var(--text-dark);
             margin: 40px 0 12px;
             padding-bottom: 8px;
-            border-bottom: 1px solid rgba(27,77,53,.15);
+            border-bottom: 1px solid rgba(0,0,0,.08);
         }
 
         p { font-size: 15px; color: var(--text-mid); margin-bottom: 14px; }
@@ -108,11 +113,11 @@
             top: 14px;
             width: 7px;
             height: 7px;
-            background: var(--gold);
+            background: #FF8A00;
             border-radius: 50%;
         }
 
-        a { color: var(--forest); text-decoration: underline; }
+        a { color: #FF8A00; text-decoration: underline; }
 
         footer {
             background: var(--forest-dark);

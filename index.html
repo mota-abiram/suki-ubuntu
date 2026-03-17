@@ -22,25 +22,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Gambarino&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"
         rel="stylesheet" />
     <style>
         /* ============================================================
 CSS CUSTOM PROPERTIES
 ============================================================ */
         :root {
-            --forest: #1B4D35;
-            --forest-dark: #0F2D1E;
-            --forest-mid: #2D6348;
-            --gold: #C4973A;
-            --gold-light: #E8C46A;
-            --cream: #F9F5EE;
-            --cream-dark: #F0EAE0;
-            --sage: #7B9E87;
+            --forest: #3A3A3A;
+            --forest-dark: #2F2F2F;
+            --forest-mid: #484848;
+            --gold: #E8A855;
+            --gold-light: #F0C67A;
+            --cream: #F5F2EC;
+            --cream-dark: #EBE7DF;
+            --sage: #A8C84A;
             --white: #ffffff;
-            --text-dark: #1A1A1A;
-            --text-mid: #4A4A4A;
-            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --text-dark: #2F2F2F;
+            --text-mid: #6B6B6B;
+            --text-light: #CFCFCF;
+            --brand-gradient: linear-gradient(135deg, #FF8A00, #FF3CAC, #784BA0, #2B86C5);
+            --brand-gradient-warm: linear-gradient(135deg, #F7B731, #FC5C65, #EB3B5A);
+            --brand-gradient-nature: linear-gradient(135deg, #B8CC42, #5BBFAD, #E8A855);
+            --font-serif: 'Gambarino', Georgia, serif;
             --font-sans: 'DM Sans', system-ui, sans-serif;
             --nav-h: 70px;
             --header-h: var(--nav-h);
@@ -120,18 +124,21 @@ UTILITIES
 
         .section-title {
             font-family: var(--font-serif);
-            font-size: clamp(28px, 6vw, 52px);
-            font-weight: 600;
-            line-height: 1.15;
+            font-size: clamp(28px, 6vw, 48px);
+            font-weight: 400;
+            line-height: 1.12;
             color: var(--forest-dark);
         }
 
         .section-title span {
-            color: var(--gold);
+            background: url('gradient-01.jpeg') center/cover no-repeat;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .section-desc {
-            font-size: clamp(14px, 2vw, 16px);
+            font-size: clamp(15px, 2vw, 17px);
             color: var(--text-mid);
             line-height: 1.7;
             max-width: 620px;
@@ -153,23 +160,24 @@ UTILITIES
             align-items: center;
             justify-content: center;
             gap: 8px;
-            background: var(--gold);
+            background: var(--brand-gradient);
+            background-size: 200% 200%;
             color: var(--white);
             border: none;
             padding: 14px 32px;
-            min-height: 48px;
-            border-radius: 6px;
+            min-height: 50px;
+            border-radius: 999px;
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 500;
             letter-spacing: .5px;
             transition: var(--transition);
             white-space: nowrap;
         }
 
         .btn-primary:hover {
-            background: #b8892e;
+            filter: brightness(1.1);
             transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(196, 151, 58, .4);
+            box-shadow: 0 8px 24px rgba(255, 138, 0, .3);
         }
 
         .btn-outline {
@@ -178,19 +186,19 @@ UTILITIES
             justify-content: center;
             gap: 8px;
             background: transparent;
-            color: var(--forest);
-            border: 2px solid var(--forest);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, .3);
             padding: 12px 28px;
-            min-height: 48px;
-            border-radius: 6px;
+            min-height: 50px;
+            border-radius: 999px;
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 500;
             transition: var(--transition);
         }
 
         .btn-outline:hover {
-            background: var(--forest);
-            color: var(--white);
+            background: rgba(255, 255, 255, .1);
+            border-color: rgba(255, 255, 255, .5);
         }
 
         .reveal {
@@ -280,14 +288,14 @@ NAVBAR
             left: 10px;
             right: 10px;
             height: 2px;
-            background: var(--gold);
+            background: var(--brand-gradient);
             transform: scaleX(0);
             transition: transform .25s ease;
         }
 
         .nav-link-item:hover,
         .nav-link-item.active {
-            color: var(--gold-light);
+            color: var(--white);
         }
 
         .nav-link-item:hover::after,
@@ -302,12 +310,13 @@ NAVBAR
         }
 
         .nav-cta {
-            background: var(--gold);
+            background: var(--brand-gradient);
+            background-size: 200% 200%;
             color: var(--white);
             border: none;
-            padding: 10px 20px;
-            min-height: 44px;
-            border-radius: 6px;
+            padding: 9px 22px;
+            min-height: 40px;
+            border-radius: 999px;
             font-size: 13px;
             font-weight: 600;
             transition: var(--transition);
@@ -379,7 +388,7 @@ HAMBURGER / MOBILE NAV
             right: 0;
             background: var(--forest-dark);
             z-index: 999;
-            border-bottom: 1px solid rgba(196, 151, 58, .25);
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
             box-shadow: 0 8px 24px rgba(0, 0, 0, .3);
         }
 
@@ -405,8 +414,8 @@ HAMBURGER / MOBILE NAV
         }
 
         .mobile-nav-list a:hover {
-            color: var(--gold-light);
-            background: rgba(196, 151, 58, .08);
+            color: var(--white);
+            background: rgba(255, 255, 255, .06);
         }
 
         /* Show hamburger whenever inline nav-links are hidden */
@@ -435,10 +444,10 @@ HERO SECTION
         .hero-banner {
             position: absolute;
             inset: 0;
-            background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 100%), url('assets/banner1.png');
+            background-image: linear-gradient(180deg, rgba(47, 47, 47, 0.55) 0%, rgba(47, 47, 47, 0.25) 50%, rgba(47, 47, 47, 0.7) 100%), url('assets/banner1.png');
             background-size: cover;
             background-position: center;
-            opacity: 0.85;
+            opacity: 1;
         }
 
         .hero-content {
@@ -451,36 +460,53 @@ HERO SECTION
         }
 
         .hero-text {
-            max-width: 720px;
+            max-width: 620px;
+            padding-right: 80px;
+        }
+
+        .form-section-inner::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 138, 0, .08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .hero-eyebrow {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(196, 151, 58, .2);
-            border: 1px solid rgba(196, 151, 58, .4);
-            color: var(--gold-light);
-            padding: 6px 16px;
-            border-radius: 40px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 2px;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .15);
+            backdrop-filter: blur(8px);
+            color: rgba(255, 255, 255, .9);
+            padding: 8px 20px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
         }
 
         .hero-title {
             font-family: var(--font-serif);
             font-size: clamp(34px, 7vw, 72px);
-            font-weight: 700;
+            font-weight: 400;
             line-height: 1.1;
             color: var(--white);
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .hero-title em {
-            color: var(--gold-light);
+            background: url('gradient-02.jpg') center/cover no-repeat;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-style: normal;
         }
 
@@ -503,19 +529,19 @@ HERO SECTION
             display: flex;
             align-items: center;
             gap: 6px;
-            background: rgba(255, 255, 255, .12);
-            border: 1px solid rgba(255, 255, 255, .3);
-            backdrop-filter: blur(6px);
-            color: var(--white);
-            padding: 8px 16px;
-            border-radius: 40px;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .12);
+            backdrop-filter: blur(10px);
+            color: rgba(255, 255, 255, .85);
+            padding: 10px 18px;
+            border-radius: 999px;
             font-size: 13px;
-            font-weight: 500;
+            font-weight: 400;
         }
 
         .hero-chip strong {
-            color: var(--gold-light);
-            font-weight: 700;
+            color: var(--white);
+            font-weight: 600;
         }
 
         .hero-chip svg {
@@ -547,12 +573,13 @@ HERO SECTION
 LEAD FORM SECTION (standalone – change #3)
 ============================================================ */
         #lead-form {
-            background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest) 100%);
-            padding: 72px 0;
+            background: var(--forest-dark);
+            padding: 100px 0;
             scroll-margin-top: var(--nav-h);
         }
 
         .form-section-inner {
+            position: relative;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 64px;
@@ -560,7 +587,7 @@ LEAD FORM SECTION (standalone – change #3)
         }
 
         .form-left-text .section-label {
-            color: var(--gold-light);
+            color: rgba(255, 255, 255, .5);
         }
 
         .form-left-text .section-title {
@@ -568,11 +595,14 @@ LEAD FORM SECTION (standalone – change #3)
         }
 
         .form-left-text .section-title span {
-            color: var(--gold-light);
+            background: url('gradient-02.jpg') center/cover no-repeat;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .form-left-text .section-desc {
-            color: rgba(255, 255, 255, .75);
+            color: rgba(255, 255, 255, .6);
             max-width: 480px;
         }
 
@@ -594,14 +624,14 @@ LEAD FORM SECTION (standalone – change #3)
         .form-perk-icon {
             width: 32px;
             height: 32px;
-            background: rgba(196, 151, 58, .2);
-            border: 1px solid rgba(196, 151, 58, .35);
+            background: rgba(255, 138, 0, .15);
+            border: 1px solid rgba(255, 138, 0, .25);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            color: var(--gold-light);
+            color: #FF8A00;
         }
 
         .lead-form-card {
@@ -615,7 +645,7 @@ LEAD FORM SECTION (standalone – change #3)
             font-family: var(--font-serif);
             font-size: 26px;
             font-weight: 700;
-            color: var(--forest-dark);
+            color: var(--text-dark);
             margin-bottom: 6px;
         }
 
@@ -655,8 +685,8 @@ LEAD FORM SECTION (standalone – change #3)
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--forest);
-            box-shadow: 0 0 0 3px rgba(27, 77, 53, .1);
+            border-color: #FF8A00;
+            box-shadow: 0 0 0 3px rgba(255, 138, 0, .1);
         }
 
         .form-group input.error,
@@ -677,20 +707,21 @@ LEAD FORM SECTION (standalone – change #3)
 
         .form-submit-btn {
             width: 100%;
-            padding: 15px;
-            background: var(--gold);
+            padding: 16px;
+            background: var(--brand-gradient);
+            background-size: 200% 200%;
             color: var(--white);
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 700;
+            border-radius: 999px;
+            font-size: 15px;
+            font-weight: 600;
             letter-spacing: .5px;
             transition: var(--transition);
             margin-top: 4px;
         }
 
         .form-submit-btn:hover {
-            background: #b8892e;
+            filter: brightness(1.1);
             transform: translateY(-1px);
         }
 
@@ -774,7 +805,7 @@ SITELINKS BAR
             left: 0;
             right: 0;
             height: 2px;
-            background: var(--gold);
+            background: var(--brand-gradient);
             transform: scaleX(0);
             transition: transform .25s ease;
         }
@@ -785,8 +816,8 @@ SITELINKS BAR
 
         .sitelink-item:hover,
         .sitelink-item.active {
-            color: var(--gold-light);
-            background: rgba(196, 151, 58, .08);
+            color: var(--white);
+            background: rgba(255, 255, 255, .05);
         }
 
         .sitelink-item:hover::after,
@@ -798,8 +829,8 @@ SITELINKS BAR
 PROJECT OVERVIEW
 ============================================================ */
         #overview {
-            padding: 96px 0;
-            background: var(--white);
+            padding: 120px 0;
+            background: var(--cream);
         }
 
         .overview-grid {
@@ -838,7 +869,7 @@ PROJECT OVERVIEW
         }
 
         .overview-badge span {
-            color: var(--gold-light);
+            color: #FF8A00;
         }
 
         .overview-stats {
@@ -849,17 +880,18 @@ PROJECT OVERVIEW
         }
 
         .stat-box {
-            background: var(--cream);
+            background: rgba(255, 255, 255, .7);
             padding: 20px;
             border-radius: 12px;
-            border-left: 3px solid var(--gold);
+            border-left: 3px solid transparent;
+            border-image: var(--brand-gradient) 1;
         }
 
         .stat-box .value {
             font-family: var(--font-serif);
             font-size: 28px;
             font-weight: 700;
-            color: var(--forest-dark);
+            color: var(--text-dark);
         }
 
         .stat-box .label {
@@ -873,7 +905,20 @@ USP SECTION
 ============================================================ */
         #usps {
             background: var(--forest-dark);
-            padding: 80px 0;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #usps::before {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(120, 75, 160, .06) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .usps-grid {
@@ -888,10 +933,10 @@ USP SECTION
         }
 
         .usp-card {
-            background: rgba(255, 255, 255, .06);
-            border: 1px solid rgba(255, 255, 255, .1);
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .08);
             border-radius: 16px;
-            padding: 32px 24px;
+            padding: 28px 24px;
             text-align: center;
             transition: transform .3s, background .3s;
         }
@@ -904,13 +949,13 @@ USP SECTION
         .usp-icon {
             width: 56px;
             height: 56px;
-            background: rgba(196, 151, 58, .2);
+            background: rgba(255, 138, 0, .12);
             border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 16px;
-            color: var(--gold-light);
+            color: #FF8A00;
         }
 
         .usp-card h4 {
@@ -933,7 +978,10 @@ USP SECTION
         }
 
         #usps .section-title span {
-            color: var(--gold-light);
+            background: url('gradient-01.jpeg') center/cover no-repeat;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         #usps .section-desc {
@@ -944,8 +992,8 @@ USP SECTION
 AMENITIES
 ============================================================ */
         #amenities {
-            padding: 96px 0;
-            background: var(--cream);
+            padding: 120px 0;
+            background: var(--white);
         }
 
         .amenity-tabs {
@@ -958,17 +1006,17 @@ AMENITIES
         .amenity-tab {
             padding: 9px 22px;
             border-radius: 40px;
-            border: 2px solid var(--forest);
+            border: 2px solid rgba(47, 47, 47, .2);
             background: transparent;
             font-size: 14px;
             font-weight: 500;
-            color: var(--forest);
+            color: var(--text-dark);
             transition: var(--transition);
         }
 
         .amenity-tab.active,
         .amenity-tab:hover {
-            background: var(--forest);
+            background: var(--forest-dark);
             color: var(--white);
         }
 
@@ -983,13 +1031,13 @@ AMENITIES
         }
 
         .amenity-item {
-            background: var(--white);
+            background: var(--cream);
             border-radius: 12px;
             padding: 20px;
             display: flex;
             align-items: center;
             gap: 14px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .04);
         }
 
         .amenity-item svg {
@@ -1007,8 +1055,8 @@ AMENITIES
 PROJECT SPECIFICATIONS (change #6)
 ============================================================ */
         #specifications {
-            padding: 96px 0;
-            background: var(--white);
+            padding: 120px 0;
+            background: var(--cream);
         }
 
         .specs-accordion {
@@ -1019,7 +1067,7 @@ PROJECT SPECIFICATIONS (change #6)
         }
 
         .spec-group {
-            border: 1px solid #E8E8E8;
+            border: 1px solid rgba(0, 0, 0, .08);
             border-radius: 12px;
             overflow: hidden;
             transition: box-shadow .3s;
@@ -1041,7 +1089,7 @@ PROJECT SPECIFICATIONS (change #6)
 
         .spec-group-header:hover,
         .spec-group.open .spec-group-header {
-            background: var(--cream);
+            background: rgba(255, 138, 0, .04);
         }
 
         .spec-group-title {
@@ -1056,16 +1104,16 @@ PROJECT SPECIFICATIONS (change #6)
         .spec-group-icon {
             width: 36px;
             height: 36px;
-            background: rgba(27, 77, 53, .1);
+            background: rgba(255, 138, 0, .1);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--forest);
+            color: #FF8A00;
         }
 
         .spec-chevron {
-            color: var(--forest);
+            color: var(--text-mid);
             transition: transform .3s;
             font-size: 18px;
             line-height: 1;
@@ -1096,7 +1144,7 @@ PROJECT SPECIFICATIONS (change #6)
             justify-content: space-between;
             align-items: baseline;
             padding: 10px 14px;
-            background: var(--cream);
+            background: var(--white);
             border-radius: 8px;
             gap: 16px;
         }
@@ -1118,8 +1166,8 @@ PROJECT SPECIFICATIONS (change #6)
 TESTIMONIALS
 ============================================================ */
         #testimonials {
-            padding: 96px 0;
-            background: var(--cream);
+            padding: 120px 0;
+            background: var(--white);
         }
 
         .testimonials-grid {
@@ -1160,7 +1208,7 @@ TESTIMONIALS
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: var(--forest);
+            background: var(--brand-gradient);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1185,7 +1233,7 @@ TESTIMONIALS
 WALKTHROUGH
 ============================================================ */
         #walkthrough {
-            padding: 96px 0;
+            padding: 120px 0;
             background: var(--forest-dark);
         }
 
@@ -1234,8 +1282,8 @@ WALKTHROUGH
         }
 
         .play-circle:hover {
-            background: var(--gold);
-            border-color: var(--gold);
+            background: #FF8A00;
+            border-color: #FF8A00;
         }
 
         .play-circle svg {
@@ -1243,7 +1291,7 @@ WALKTHROUGH
         }
 
         #walkthrough .section-label {
-            color: var(--gold-light);
+            color: rgba(255, 255, 255, .5);
         }
 
         #walkthrough .section-title {
@@ -1251,7 +1299,10 @@ WALKTHROUGH
         }
 
         #walkthrough .section-title span {
-            color: var(--gold-light);
+            background: url('gradient-02.jpg') center/cover no-repeat;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         #walkthrough .section-desc {
@@ -1276,7 +1327,7 @@ WALKTHROUGH
         .walk-check {
             width: 22px;
             height: 22px;
-            background: var(--gold);
+            background: var(--brand-gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -1290,8 +1341,8 @@ WALKTHROUGH
 LOCATION (category dropdowns – change #5)
 ============================================================ */
         #location {
-            padding: 96px 0;
-            background: var(--white);
+            padding: 120px 0;
+            background: var(--cream);
         }
 
         .location-grid {
@@ -1322,7 +1373,7 @@ LOCATION (category dropdowns – change #5)
         }
 
         .loc-cat {
-            border: 1px solid #E8E8E8;
+            border: 1px solid rgba(0, 0, 0, .06);
             border-radius: 12px;
             overflow: hidden;
         }
@@ -1339,7 +1390,7 @@ LOCATION (category dropdowns – change #5)
 
         .loc-cat-header:hover,
         .loc-cat.open .loc-cat-header {
-            background: var(--cream);
+            background: rgba(255, 138, 0, .04);
         }
 
         .loc-cat-title {
@@ -1348,23 +1399,23 @@ LOCATION (category dropdowns – change #5)
             gap: 10px;
             font-size: 15px;
             font-weight: 600;
-            color: var(--forest-dark);
+            color: var(--text-dark);
         }
 
         .loc-cat-ico {
             width: 32px;
             height: 32px;
             border-radius: 8px;
-            background: rgba(27, 77, 53, .1);
+            background: rgba(255, 138, 0, .1);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--forest);
+            color: #FF8A00;
             font-size: 16px;
         }
 
         .loc-cat-arrow {
-            color: var(--forest);
+            color: var(--text-mid);
             font-size: 16px;
             transition: transform .3s;
         }
@@ -1389,7 +1440,7 @@ LOCATION (category dropdowns – change #5)
             justify-content: space-between;
             align-items: center;
             padding: 8px 12px;
-            background: var(--cream);
+            background: var(--white);
             border-radius: 8px;
             font-size: 14px;
         }
@@ -1400,7 +1451,7 @@ LOCATION (category dropdowns – change #5)
         }
 
         .loc-item-dist {
-            color: var(--forest);
+            color: #FF8A00;
             font-weight: 600;
             font-size: 13px;
         }
@@ -1409,8 +1460,8 @@ LOCATION (category dropdowns – change #5)
 FLOOR PLANS
 ============================================================ */
         #floor-plans {
-            padding: 96px 0;
-            background: var(--cream);
+            padding: 120px 0;
+            background: var(--white);
         }
 
         .plans-grid {
@@ -1436,7 +1487,7 @@ FLOOR PLANS
         }
 
         .plan-tag {
-            background: var(--forest);
+            background: var(--brand-gradient);
             color: var(--white);
             padding: 4px 12px;
             border-radius: 20px;
@@ -1479,18 +1530,18 @@ FLOOR PLANS
         }
 
         .plan-unlock-btn {
-            background: var(--gold);
+            background: var(--brand-gradient);
             color: var(--white);
             border: none;
-            padding: 11px 24px;
-            border-radius: 6px;
+            padding: 12px 28px;
+            border-radius: 999px;
             font-size: 14px;
             font-weight: 600;
             transition: var(--transition);
         }
 
         .plan-unlock-btn:hover {
-            background: #b8892e;
+            filter: brightness(1.1);
         }
 
         .plan-unlock p {
@@ -1521,8 +1572,8 @@ FLOOR PLANS
 GALLERY
 ============================================================ */
         #gallery {
-            padding: 96px 0;
-            background: var(--white);
+            padding: 120px 0;
+            background: var(--cream);
         }
 
         .gallery-carousel {
@@ -1592,8 +1643,8 @@ GALLERY
 FAQ
 ============================================================ */
         #faq {
-            padding: 96px 0;
-            background: var(--cream);
+            padding: 120px 0;
+            background: var(--white);
         }
 
         .faq-list {
@@ -1608,7 +1659,7 @@ FAQ
             background: var(--white);
             border-radius: 12px;
             overflow: hidden;
-            border: 1px solid #E8E8E8;
+            border: 1px solid rgba(0, 0, 0, .06);
         }
 
         .faq-q {
@@ -1619,16 +1670,16 @@ FAQ
             cursor: pointer;
             font-size: 15px;
             font-weight: 600;
-            color: var(--forest-dark);
+            color: var(--text-dark);
         }
 
         .faq-q:hover {
-            background: var(--cream);
+            background: rgba(255, 138, 0, .03);
         }
 
         .faq-icon {
             font-size: 22px;
-            color: var(--gold);
+            color: #FF8A00;
             line-height: 1;
             transition: transform .3s;
             font-weight: 300;
@@ -1655,7 +1706,7 @@ CLOSING SECTION – replaces footer (change #7)
 ============================================================ */
         #closing {
             background: var(--forest-dark);
-            padding: 80px 0 0;
+            padding: 100px 0 0;
         }
 
         .closing-inner {
@@ -1674,7 +1725,10 @@ CLOSING SECTION – replaces footer (change #7)
         }
 
         .closing-left .project-name em {
-            color: var(--gold-light);
+            background: url('gradient-01.jpeg') center/cover no-repeat;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-style: normal;
         }
 
@@ -1703,7 +1757,7 @@ CLOSING SECTION – replaces footer (change #7)
         .closing-detail-icon {
             width: 28px;
             height: 28px;
-            background: rgba(196, 151, 58, .2);
+            background: rgba(255, 138, 0, .15);
             border-radius: 6px;
             display: flex;
             align-items: center;
@@ -1719,9 +1773,10 @@ CLOSING SECTION – replaces footer (change #7)
 
         .closing-divider {
             width: 60px;
-            height: 2px;
-            background: var(--gold);
+            height: 3px;
+            background: var(--brand-gradient);
             margin: 32px 0;
+            border-radius: 2px;
         }
 
         .developer-heading {
@@ -1729,7 +1784,7 @@ CLOSING SECTION – replaces footer (change #7)
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: rgba(255, 255, 255, .5);
             margin-bottom: 14px;
         }
 
@@ -1757,8 +1812,11 @@ CLOSING SECTION – replaces footer (change #7)
         .dev-stat .val {
             font-family: var(--font-serif);
             font-size: 24px;
-            font-weight: 700;
-            color: var(--gold-light);
+            font-weight: 400;
+            background: url('gradient-02.jpg') center/cover no-repeat;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .dev-stat .lbl {
@@ -1779,7 +1837,7 @@ CLOSING SECTION – replaces footer (change #7)
             font-family: var(--font-serif);
             font-size: 24px;
             font-weight: 700;
-            color: var(--forest-dark);
+            color: var(--text-dark);
             margin-bottom: 6px;
         }
 
@@ -1861,12 +1919,12 @@ STICKY BOTTOM BAR
         }
 
         .sticky-call {
-            background: var(--gold);
+            background: var(--brand-gradient);
             color: var(--white);
         }
 
         .sticky-call:hover {
-            background: #b8892e;
+            opacity: 0.88;
         }
 
         .sticky-enq {
@@ -1932,7 +1990,7 @@ POPUP MODAL
             font-family: var(--font-serif);
             font-size: 26px;
             font-weight: 700;
-            color: var(--forest-dark);
+            color: var(--text-dark);
             margin-bottom: 6px;
         }
 
@@ -1968,7 +2026,7 @@ THANK-YOU OVERLAY
         .ty-check {
             width: 80px;
             height: 80px;
-            background: var(--gold);
+            background: var(--brand-gradient);
             border-radius: 50%;
             margin: 0 auto 24px;
             display: flex;
@@ -1993,11 +2051,11 @@ THANK-YOU OVERLAY
         }
 
         .ty-back {
-            background: var(--gold);
+            background: var(--brand-gradient);
             color: var(--white);
             border: none;
-            padding: 13px 32px;
-            border-radius: 6px;
+            padding: 14px 36px;
+            border-radius: 999px;
             font-size: 15px;
             font-weight: 600;
         }
@@ -2074,7 +2132,7 @@ THANK-YOU OVERLAY
             }
 
             .hero-banner {
-                background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 100%), url('assets/mobile.png');
+                background-image: linear-gradient(180deg, rgba(47, 47, 47, 0.6) 0%, rgba(47, 47, 47, 0.2) 50%, rgba(47, 47, 47, 0.75) 100%), url('assets/mobile.png');
             }
 
             .hero-content {
@@ -2531,10 +2589,6 @@ PHONE FIELD HINT
             color: #888;
             margin-top: 4px;
         }
-
-        /* ============================================================ 
-           SNEHA BOT
-           ============================================================ */
     </style>
 </head>
 
@@ -2617,7 +2671,7 @@ HERO SECTION
                     </svg>
                     IGBC Platinum Certified &middot; Puppalaguda, Hyderabad
                 </div>
-                <h2 class="hero-title"><em>Sukhi Ubuntu</em><br>Elevated Living in the Heart of<br> West Hyderabad</h2>
+                <h2 class="hero-title"><em>Sukhi Ubuntu</em><br>Elevated Living in the Heart of West Hyderabad</h2>
                 <p class="hero-subtitle">A landmark residential community, bringing together modern architecture, green
                     living, and vibrant community spaces, just minutes from Financial District.</p>
                 <div class="hero-chips">
