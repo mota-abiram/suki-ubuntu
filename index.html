@@ -328,7 +328,8 @@ NAVBAR
                 font-size: 12px;
             }
 
-            .nav-logo-img {
+            .nav-logo-img,
+            .sticky-logo-img {
                 height: 40px;
             }
         }
@@ -1968,10 +1969,15 @@ STICKY BOTTOM BAR
             background: var(--forest-dark);
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 12px 24px;
+            justify-content: space-between;
+            padding: 8px 16px;
             box-shadow: 0 -2px 20px rgba(0, 0, 0, .3);
+        }
+
+        .sticky-logo-img {
+            height: 48px;
+            width: auto;
+            display: block;
         }
 
         .sticky-btn {
@@ -2782,6 +2788,13 @@ HERO SECTION
                             <path d="M8 21h8M12 17v4" />
                         </svg>
                         <strong>1,315 &ndash; 2,230 sq.ft</strong>
+                    </div>
+                    <div class="hero-chip">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" />
+                        </svg>
+                        <strong>100% Corner Flats</strong>
                     </div>
                     <div class="hero-chip">
                         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
@@ -3805,6 +3818,9 @@ CLOSING SECTION (replaces footer – change #7)
 STICKY BOTTOM BAR
 ====================================================== -->
     <div id="sticky-bar" role="complementary" aria-label="Quick contact options">
+        <a href="index.html" class="sticky-logo">
+            <img src="assets/Sukhii logo colour_1@4x.png" alt="Sukhii Logo" class="sticky-logo-img" />
+        </a>
         <button class="sticky-btn sticky-enq"
             onclick="openPopup('Enquire Now','Get exclusive pricing and availability details.');gtmPush('cta_click',{property_name:'Sukhii Ubuntu',cta_name:'Enquire Now',page_section:'sticky_bar'});">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -3812,6 +3828,7 @@ STICKY BOTTOM BAR
             </svg>
             Enquire Now
         </button>
+        <div style="width: 100px; opacity: 0; pointer-events: none;" class="hide-mobile"></div>
     </div>
 
     <!-- ======================================================
