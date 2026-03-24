@@ -17,6 +17,7 @@
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-WJ4D5RTV');</script>
     <!-- End Google Tag Manager -->
+
     <!-- Meta Pixel -->
     <script>!function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) }; if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s) }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', 'XXXXXXXXXXXXXXXXX'); fbq('track', 'PageView');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -330,6 +331,10 @@ NAVBAR
 
             .nav-logo-img {
                 height: 40px;
+            }
+
+            .sticky-logo-img {
+                height: 70px;
             }
         }
 
@@ -1169,11 +1174,90 @@ TESTIMONIALS
             background: var(--white);
         }
 
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 48px;
+        .testimonials-container {
+            position: relative;
+            max-width: 900px;
+            margin: 48px auto 0;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .testimonial-slide {
+            flex: 0 0 100%;
+            padding: 0 15px;
+            opacity: 0.5;
+            transform: scale(0.9);
+            transition: all 0.5s ease;
+        }
+
+        .testimonial-slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, .08);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonials-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .nav-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            background: transparent;
+            color: var(--gold);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        .testimonial-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(147, 216, 213, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--gold);
+            width: 24px;
+            border-radius: 10px;
         }
 
         .testimonial-card {
@@ -1889,10 +1973,15 @@ STICKY BOTTOM BAR
             background: var(--forest-dark);
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 12px 24px;
+            justify-content: space-between;
+            padding: 8px 16px;
             box-shadow: 0 -2px 20px rgba(0, 0, 0, .3);
+        }
+
+        .sticky-logo-img {
+            height: 70px;
+            width: auto;
+            display: block;
         }
 
         .sticky-btn {
@@ -2143,7 +2232,7 @@ THANK-YOU OVERLAY
                 justify-content: center;
                 text-align: center;
                 white-space: normal;
-                padding-top: 0;
+                padding-top: 0.5;
                 margin-top: 40px;
             }
 
@@ -2599,6 +2688,7 @@ PHONE FIELD HINT
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
+
     <!-- ======================================================
 NAVBAR
 ====================================================== -->
@@ -2618,9 +2708,9 @@ NAVBAR
                 <a class="nav-link-item" href="#gallery">Gallery</a>
             </div>
             <div style="display:flex;align-items:center;gap:12px;">
-                <button class="nav-cta"
+                <!-- <button class="nav-cta"
                     onclick="openPopup('Enquire Now','Get in touch with our team for pricing and availability.');">Enquire
-                    Now</button>
+                    Now</button> -->
                 <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false"
                     aria-controls="mobile-nav">
                     <span></span><span></span><span></span>
@@ -2703,6 +2793,13 @@ HERO SECTION
                             <path d="M8 21h8M12 17v4" />
                         </svg>
                         <strong>1,315 &ndash; 2,230 sq.ft</strong>
+                    </div>
+                    <div class="hero-chip">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" />
+                        </svg>
+                        <strong>100% Corner Flats</strong>
                     </div>
                     <div class="hero-chip">
                         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
@@ -2833,7 +2930,7 @@ PROJECT OVERVIEW
                             <div class="label">Total Residences</div>
                         </div>
                         <div class="stat-box">
-                            <div class="value">5.25 Ac</div>
+                            <div class="value">5.25 Acres</div>
                             <div class="label">Total Land Area</div>
                         </div>
                         <div class="stat-box">
@@ -2843,11 +2940,17 @@ PROJECT OVERVIEW
 
                         <div class="stat-box">
                             <div class="value">36</div>
-                            <div class="label">Storeys / 3 Towers</div>
+                            <div class="label">Storeys </div>
                         </div>
                         <div class="stat-box">
-                            <div class="value">1,00,000+ Sq Ft</div>
-                            <div class="label">Amenity Area</div>
+                            <div class="value">3</div>
+                            <div class="label">Towers</div>
+                        </div>
+
+                        <div class="stat-box">
+                            <div class="value">1,00,000</div>
+                            <div class="label">Total square footage of amenities
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2878,9 +2981,8 @@ USP SECTION
                         </svg>
                     </div>
                     <h4>100% Corner Flats</h4>
-                    <p>Not a single shared wall. Every apartment at Ubuntu is a corner flat, ensuring cross-ventilation,
-                        natural light from multiple directions, sprawling views, and complete privacy without isolation.
-                    </p>
+                    <p>Every apartment is a corner flat, ensuring cross-ventilation, natural light, sprawling views, and
+                        complete privacy without isolation.</p>
                 </div>
                 <div class="usp-card">
                     <div class="usp-icon">
@@ -2891,8 +2993,8 @@ USP SECTION
                         </svg>
                     </div>
                     <h4>Connected Sky Terraces</h4>
-                    <p>All three towers are architecturally linked at the top, creating Hyderabad’s first sky deck, a
-                        community space in the sky fostering neighbourhood living at an elevated level.</p>
+                    <p>All three towers are linked at the top, creating Hyderabad’s first sky deck, a community space at
+                        400ft above the ground.
                 </div>
                 <div class="usp-card">
                     <div class="usp-icon">
@@ -2903,7 +3005,7 @@ USP SECTION
                     </div>
                     <h4>IGBC Platinum Pre-Rated</h4>
                     <p>India's highest green building certification. Superior energy efficiency, water conservation, and
-                        reduced carbon emissions, lowering your long-term utility costs.</p>
+                        reduced carbon emissions.
                 </div>
                 <div class="usp-card">
                     <div class="usp-icon">
@@ -2915,7 +3017,8 @@ USP SECTION
                     </div>
                     <h4>Award-Winning Sustainability</h4>
                     <p>Recognised as Best Eco-Friendly Sustainable Project, Times Business 2024. Natural ventilation
-                        design, eco-friendly roofing, and EV charging stations built in.</p>
+                        design, eco-friendly roofing, and EV charging stations built in.
+
                 </div>
                 <div class="usp-card">
                     <div class="usp-icon">
@@ -2926,13 +3029,93 @@ USP SECTION
                         </svg>
                     </div>
                     <h4>Prime Location</h4>
-                    <p>At Puppalaguda, just 2 minutes from the Financial District, 15 minutes from HITEC City, and
-                        0.5km
-                        from the Outer Ring Road. At the epicentre of West Hyderabad's growth corridor.</p>
+                    <p>At Puppalaguda, just 2 minutes from the Financial District, 15 minutes from HITEC City, and 0.5km
+                        from the Outer Ring Road.
                 </div>
             </div>
         </div>
     </section>
+
+    <section id="location" class="reveal" aria-label="Location highlights">
+        <div class="container">
+            <p class="section-label">Location</p>
+            <h2 class="section-title">Location Advantage: <span>Effortlessly Connected</span></h2>
+            <p class="section-desc">Strategically located in Puppalaguda, at the convergence of West Hyderabad's most
+                connected corridors.</p>
+            <div class="location-grid">
+                <div class="location-map-wrap">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.0!2d78.3606113!3d17.4069153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb95cffb04a357%3A0x92237e2e9d6fa4b5!2sSukhii%20Ubuntu!5e0!3m2!1sen!2sin!4v1710000000000"
+                        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        title="Sukhii Ubuntu location map"></iframe>
+                </div>
+                <div class="location-categories" id="loc-categories">
+
+                    <div class="loc-cat open">
+                        <div class="loc-cat-header" onclick="toggleLocCat(this)">
+                            <div class="loc-cat-title">
+                                <div class="loc-cat-ico">&#127970;</div>Tech &amp; Business
+                            </div>
+                            <span class="loc-cat-arrow">&#9660;</span>
+                        </div>
+                        <div class="loc-cat-items">
+                            <div class="loc-item"><span class="loc-item-name">Financial District</span><span
+                                    class="loc-item-dist">2 minutes</span></div>
+                            <div class="loc-item"><span class="loc-item-name">Nanakramguda Junction</span><span
+                                    class="loc-item-dist">2 minutes</span></div>
+                            <div class="loc-item"><span class="loc-item-name">HITEC City</span><span
+                                    class="loc-item-dist">15 minutes</span></div>
+                        </div>
+                    </div>
+
+                    <div class="loc-cat">
+                        <div class="loc-cat-header" onclick="toggleLocCat(this)">
+                            <div class="loc-cat-title">
+                                <div class="loc-cat-ico">&#127891;</div>Education
+                            </div>
+                            <span class="loc-cat-arrow">&#9660;</span>
+                        </div>
+                        <div class="loc-cat-items">
+                            <div class="loc-item"><span class="loc-item-name">International Schools</span><span
+                                    class="loc-item-dist">Within close proximity</span></div>
+                        </div>
+                    </div>
+
+                    <div class="loc-cat">
+                        <div class="loc-cat-header" onclick="toggleLocCat(this)">
+                            <div class="loc-cat-title">
+                                <div class="loc-cat-ico">&#128663;</div>Transport
+                            </div>
+                            <span class="loc-cat-arrow">&#9660;</span>
+                        </div>
+                        <div class="loc-cat-items">
+                            <div class="loc-item"><span class="loc-item-name">Outer Ring Road (ORR)</span><span
+                                    class="loc-item-dist">0.5 km</span></div>
+                            <div class="loc-item"><span class="loc-item-name">Lanco Hills Junction</span><span
+                                    class="loc-item-dist">0.5 km</span></div>
+                            <div class="loc-item"><span class="loc-item-name">Rajiv Gandhi Intl. Airport</span><span
+                                    class="loc-item-dist">30 minutes</span></div>
+                        </div>
+                    </div>
+
+                    <div class="loc-cat">
+                        <div class="loc-cat-header" onclick="toggleLocCat(this)">
+                            <div class="loc-cat-title">
+                                <div class="loc-cat-ico">&#127807;</div>Nature
+                            </div>
+                            <span class="loc-cat-arrow">&#9660;</span>
+                        </div>
+                        <div class="loc-cat-items">
+                            <div class="loc-item"><span class="loc-item-name">Khajaguda Hills (Natural
+                                    Reserve)</span><span class="loc-item-dist">400+ acres, adjacent</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- ======================================================
 AMENITIES
@@ -3156,7 +3339,7 @@ PROJECT SPECIFICATIONS (change #6 – new section)
                                     class="spec-val">Seismic Zone Compliant</span></div>
                             <div class="spec-row"><span class="spec-key">Foundation</span><span class="spec-val">As per
                                     structural design</span></div>
-                            <div class="spec-row"><span class="spec-key">Towers</span><span class="spec-val">36–40
+                            <div class="spec-row"><span class="spec-key">Towers</span><span class="spec-val">36
                                     storeys, 3 towers</span></div>
                         </div>
                     </div>
@@ -3250,46 +3433,70 @@ TESTIMONIALS
                 <p class="section-label">What Residents Say</p>
                 <h2 class="section-title">Loved by Early <span> Homeowners</span></h2>
             </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="testimonial-text">“A truly premium gated community. The sky deck, all corner flats, and
-                        thoughtfully designed amenities make the project stand out. With excellent connectivity to major
-                        IT campuses, the location is incredibly convenient. Everything about the project feels very well
-                        planned and organised. Truly a game changer.”</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">PY</div>
-                        <div>
-                            <div class="author-name">Pasha Younus</div>
+            <div class="testimonials-container">
+                <div class="testimonials-track" id="testimonials-track">
+                    <!-- Slide 1 -->
+                    <div class="testimonial-slide active">
+                        <div class="testimonial-card">
+                            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                            <p class="testimonial-text">“A truly premium gated community. The sky deck, all corner
+                                flats, and
+                                thoughtfully designed amenities make the project stand out. With excellent connectivity
+                                to major
+                                IT campuses, the location is incredibly convenient.”</p>
+                            <div class="testimonial-author" style="justify-content: center;">
+                                <div class="author-avatar">PY</div>
+                                <div>
+                                    <div class="author-name">Pasha Younus</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                            <p class="testimonial-text">“I recently booked a flat here and absolutely love the project,
+                                especially its design and architecture. The concept feels very unique and thoughtfully
+                                planned.
+                                The location is quickly emerging as one of the most prestigious areas.”</p>
+                            <div class="testimonial-author" style="justify-content: center;">
+                                <div class="author-avatar">Z</div>
+                                <div>
+                                    <div class="author-name">Zubair</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                            <p class="testimonial-text">“I recently had the opportunity to preview this upcoming
+                                apartment
+                                development, and it truly stands out as one of the most exciting residential projects in
+                                the
+                                area. The towers offer stunning city views and promise a premium lifestyle.”</p>
+                            <div class="testimonial-author" style="justify-content: center;">
+                                <div class="author-avatar">V</div>
+                                <div>
+                                    <div class="author-name">Vinod</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="testimonial-text">“I recently booked a flat here and absolutely love the project,
-                        especially its design and architecture. The concept feels very unique and thoughtfully planned.
-                        The location is a major advantage and is quickly emerging as one of the most prestigious areas.
-                        Throughout the process, Sukhii Group has been very transparent and proactive in addressing all
-                        our queries.”</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">Z</div>
-                        <div>
-                            <div class="author-name">Zubair</div>
-                        </div>
+
+                <div class="testimonials-nav">
+                    <button class="nav-btn prev" onclick="moveTestimonials(-1)"
+                        aria-label="Previous testimonial">&#8592;</button>
+                    <div class="testimonial-dots" id="testimonial-dots">
+                        <span class="dot active" onclick="jumpToTestimonial(0)"></span>
+                        <span class="dot" onclick="jumpToTestimonial(1)"></span>
+                        <span class="dot" onclick="jumpToTestimonial(2)"></span>
                     </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="testimonial-text">“I recently had the opportunity to preview this upcoming apartment
-                        development, and it truly stands out as one of the most exciting residential projects in the
-                        area. With 36 floors of thoughtfully designed living spaces, the towers offer stunning city
-                        views and promise a premium lifestyle. The apartments themselves are very impressive.”</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">V</div>
-                        <div>
-                            <div class="author-name">Vinod</div>
-                        </div>
-                    </div>
+                    <button class="nav-btn next" onclick="moveTestimonials(1)"
+                        aria-label="Next testimonial">&#8594;</button>
                 </div>
             </div>
         </div>
@@ -3335,85 +3542,6 @@ WALKTHROUGH VIDEO
     <!-- ======================================================
 LOCATION (category dropdowns – change #5)
 ====================================================== -->
-    <section id="location" class="reveal" aria-label="Location highlights">
-        <div class="container">
-            <p class="section-label">Location</p>
-            <h2 class="section-title">Location Advantage: <span>Effortlessly Connected</span></h2>
-            <p class="section-desc">Strategically located in Puppalaguda, at the convergence of West Hyderabad's most
-                connected corridors.</p>
-            <div class="location-grid">
-                <div class="location-map-wrap">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.0!2d78.3606113!3d17.4069153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb95cffb04a357%3A0x92237e2e9d6fa4b5!2sSukhii%20Ubuntu!5e0!3m2!1sen!2sin!4v1710000000000"
-                        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                        title="Sukhii Ubuntu location map"></iframe>
-                </div>
-                <div class="location-categories" id="loc-categories">
-
-                    <div class="loc-cat open">
-                        <div class="loc-cat-header" onclick="toggleLocCat(this)">
-                            <div class="loc-cat-title">
-                                <div class="loc-cat-ico">&#127970;</div>Tech &amp; Business
-                            </div>
-                            <span class="loc-cat-arrow">&#9660;</span>
-                        </div>
-                        <div class="loc-cat-items">
-                            <div class="loc-item"><span class="loc-item-name">Financial District</span><span
-                                    class="loc-item-dist">2 minutes</span></div>
-                            <div class="loc-item"><span class="loc-item-name">Nanakramguda Junction</span><span
-                                    class="loc-item-dist">2 minutes</span></div>
-                            <div class="loc-item"><span class="loc-item-name">HITEC City</span><span
-                                    class="loc-item-dist">15 minutes</span></div>
-                        </div>
-                    </div>
-
-                    <div class="loc-cat">
-                        <div class="loc-cat-header" onclick="toggleLocCat(this)">
-                            <div class="loc-cat-title">
-                                <div class="loc-cat-ico">&#127891;</div>Education
-                            </div>
-                            <span class="loc-cat-arrow">&#9660;</span>
-                        </div>
-                        <div class="loc-cat-items">
-                            <div class="loc-item"><span class="loc-item-name">International Schools</span><span
-                                    class="loc-item-dist">Within close proximity</span></div>
-                        </div>
-                    </div>
-
-                    <div class="loc-cat">
-                        <div class="loc-cat-header" onclick="toggleLocCat(this)">
-                            <div class="loc-cat-title">
-                                <div class="loc-cat-ico">&#128663;</div>Transport
-                            </div>
-                            <span class="loc-cat-arrow">&#9660;</span>
-                        </div>
-                        <div class="loc-cat-items">
-                            <div class="loc-item"><span class="loc-item-name">Outer Ring Road (ORR)</span><span
-                                    class="loc-item-dist">0.5 km</span></div>
-                            <div class="loc-item"><span class="loc-item-name">Lanco Hills Junction</span><span
-                                    class="loc-item-dist">0.5 km</span></div>
-                            <div class="loc-item"><span class="loc-item-name">Rajiv Gandhi Intl. Airport</span><span
-                                    class="loc-item-dist">30 minutes</span></div>
-                        </div>
-                    </div>
-
-                    <div class="loc-cat">
-                        <div class="loc-cat-header" onclick="toggleLocCat(this)">
-                            <div class="loc-cat-title">
-                                <div class="loc-cat-ico">&#127807;</div>Nature
-                            </div>
-                            <span class="loc-cat-arrow">&#9660;</span>
-                        </div>
-                        <div class="loc-cat-items">
-                            <div class="loc-item"><span class="loc-item-name">Khajaguda Hills (Natural
-                                    Reserve)</span><span class="loc-item-dist">400+ acres, adjacent</span></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ======================================================
 FLOOR PLANS
@@ -3613,7 +3741,7 @@ CLOSING SECTION (replaces footer – change #7)
                             Financial District</div>
                         <div class="closing-detail"><span
                                 class="closing-detail-icon">&#127959;</span><strong>Towers:</strong> 3 Towers &middot;
-                            36-40 Floors &middot; 855 Units</div>
+                            36 Floors &middot; 855 Units</div>
                         <div class="closing-detail"><span
                                 class="closing-detail-icon">&#127807;</span><strong>Green:</strong> IGBC Platinum
                             Certified</div>
@@ -3701,6 +3829,9 @@ CLOSING SECTION (replaces footer – change #7)
 STICKY BOTTOM BAR
 ====================================================== -->
     <div id="sticky-bar" role="complementary" aria-label="Quick contact options">
+        <a href="index.html" class="sticky-logo">
+            <img src="assets/Sukhii logo bnw_1@4x.png" alt="Sukhii Logo" class="sticky-logo-img" />
+        </a>
         <button class="sticky-btn sticky-enq"
             onclick="openPopup('Enquire Now','Get exclusive pricing and availability details.');gtmPush('cta_click',{property_name:'Sukhii Ubuntu',cta_name:'Enquire Now',page_section:'sticky_bar'});">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -3708,6 +3839,7 @@ STICKY BOTTOM BAR
             </svg>
             Enquire Now
         </button>
+        <div style="width: 100px; opacity: 0; pointer-events: none;" class="hide-mobile"></div>
     </div>
 
     <!-- ======================================================
@@ -4416,6 +4548,28 @@ JAVASCRIPT
         }
 
         /* ============================================================
+        TESTIMONIALS CAROUSEL
+        ============================================================ */
+        var testimonialIndex = 0;
+        function moveTestimonials(dir) {
+            var slides = document.querySelectorAll('.testimonial-slide');
+            var dots = document.querySelectorAll('.dot');
+            testimonialIndex = (testimonialIndex + dir + slides.length) % slides.length;
+
+            slides.forEach(function (s, i) {
+                s.classList.toggle('active', i === testimonialIndex);
+                dots[i].classList.toggle('active', i === testimonialIndex);
+            });
+            document.getElementById('testimonials-track').style.transform = 'translateX(' + (-testimonialIndex * 100) + '%)';
+        }
+        function jumpToTestimonial(index) {
+            testimonialIndex = index;
+            moveTestimonials(0);
+        }
+        setInterval(function () { moveTestimonials(1); }, 8000);
+
+
+        /* ============================================================
         SPECS ACCORDION
         ============================================================ */
         function toggleSpec(header) {
@@ -4531,6 +4685,7 @@ JAVASCRIPT
         ─────────────────────────────────────────────────────────
         ============================================================ */
     </script>
+
 </body>
 
 </html>
